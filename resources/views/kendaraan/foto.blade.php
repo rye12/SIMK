@@ -4,7 +4,7 @@
         @method('POST')
         <div class="form-group">
             <label for="exampleFormControlInput1">Foto</label>
-            <input name="foto" type="file" class="form-control" id="warna">
+            <input name="foto" type="file" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">

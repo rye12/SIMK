@@ -2,7 +2,7 @@
   @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Model Kendaraan</label>
-    <input name="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh: Avanza 1.5 Veloz" autofocus='true' autocomplete="false">
+    <input name="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh: Avanza 1.5 Veloz" autofocus='true' autocomplete="off">
   </div>
   <div class="form-group">
     <label>Jenis Kendaraan</label>
@@ -31,26 +31,26 @@
     <label for="exampleFormControlInput1">Jenis Kendaraan</label>
     <input name="id_jenis" type="jenis" class="form-control" id="exampleFormControlInput1" autocomplete="off">
   </div> -->
-  <div class="form-inline">
-    <div class="form-group">
+  <div class="form-row">
+    <div class="form-group col-md-6">
       <label for="exampleFormControlInput1">No. Rangka</label>
-      <input name="no_rangka" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
+      <input name="no_rangka" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off">
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-md-6">
       <label for="exampleFormControlInput1">No. Plat</label>
-      <input name="no_plat" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
+      <input name="no_plat" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off">
     </div>
   </div>
-
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No. Mesin</label>
-    <input name="no_mesin" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh: 2NRJHDH39874982VE" autocomplete="false">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">No. Mesin</label>
+      <input name="no_mesin" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Contoh: 2NRJHDH39874982VE" autocomplete="off">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">Warna</label>
+      <input name="warna" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="off">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Warna</label>
-    <input name="warna" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
-  </div>
-
   <button type="submit" class="btn btn-primary">
     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Kendaraan</button>
