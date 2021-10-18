@@ -7,7 +7,8 @@
             <input name="foto" type="file" class="form-control" id="warna">
         </div>
 
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-primary">
+            <i class="icon-file-upload2" style="margin-right: 5px;"></i>Upload</button>
     </form>
 </div>
 <!-- <div class="row">
