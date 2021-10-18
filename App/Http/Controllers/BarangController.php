@@ -27,11 +27,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $kategori = DB::table('barang_kategori')->pluck('nama', 'kode');
-
-        return view('barang.index', [
-            'kategori' => $kategori,
-        ]);
+        
+        return view('barang.create');
     }
 
     /**
