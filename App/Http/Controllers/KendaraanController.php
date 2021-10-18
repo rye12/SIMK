@@ -15,9 +15,12 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        
-        $data = Kendaraan::with('user')->get();
-        
+        $data = DB::table('kendaraan as a')
+            ->leftjoin('kendaraan_jenis as b', 'a.id_jenis', 'b.id')
+            ->select("a.*", "b.nama as jenis")
+            ->get();
+        //$data = Kendaraan::with('user')->get();
+
         return view('kendaraan.index', compact('data'));
     }
 
@@ -28,11 +31,9 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-       
+
 
         return view('kendaraan.create');
-
-
     }
 
     /**
@@ -43,32 +44,45 @@ class KendaraanController extends Controller
      */
     public function store(Request $request)
     {
-         // dd($kendaraan);
         $data = $request->validate([
-            'jenis' => 'required',
+            'nama' => 'required',
+            'id_jenis' => 'required',
+            'no_rangka' => 'required',
+            'no_plat' => 'required',
+            'no_mesin' => 'required',
             'warna' => 'required',
-            'mesin' => 'required', 
-            'nama'=>'required',
-            'plat'=>'required',
+
+            // 'jenis' => 'required',
+            // 'warna' => 'required',
+            // 'no_mesin' => 'required',
+            // 'nama' => 'required',
+            // 'plat' => 'required',
             // 'password' => 'required',
 
         ]);
-        
-        $kendaraan = Kendaraan::insert([
-            'jenis' => $request->jenis,
-            'warna'=> $request->warna,
-            'mesin'=> $request->mesin,
-            'nama'=>$request->nama,
-            'plat'=>$request->plat,
-        ]);
+
+        $kendaraan = [
+            'nama' => $request->nama,
+            'id_jenis' => $request->id_jenis,
+            'no_rangka' => $request->no_rangka,
+            'no_plat' => $request->no_plat,
+            'no_mesin' => $request->no_mesin,
+            'warna' => $request->warna,
+            // 'jenis' => $request->jenis,
+            // 'warna' => $request->warna,
+            // 'mesin' => $request->mesin,
+            // 'nama' => $request->nama,
+            // 'plat' => $request->plat,
+        ];
+        DB::table('kendaraan')->insert($kendaraan);
         // dd($kendaraan);
-        return redirect()->back()->with('success','Post updated successfully');
+        return redirect()->back()->with('success', 'Post updated successfully');
     }
 
-    
+
     public function show(Kendaraan $kendaraan)
     {
-        //return view('kendaraan.show',compact('kendaraan'));
+        return view('kendaraan.show', compact('kendaraan'));
     }
 
     /**
@@ -77,10 +91,11 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kendaraan $kendaraan)
+    public function edit($id)
     {
-        
-        return view('kendaraan.edit',compact('kendaraan'));
+        $kendaraan = DB::table("kendaraan")->where('id', $id)->first();
+        $jenis = DB::table("kendaraan_jenis")->get();
+        return view('kendaraan.edit', compact('kendaraan', 'jenis'));
     }
 
     /**
@@ -90,30 +105,42 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kendaraan $kendaraan)
+    public function update(Request $request, $id)
     {
         // dd($kendaraan);
         $data = $request->validate([
-            'jenis' => 'required',
+            'nama' => 'required',
+            'id_jenis' => 'required',
+            'no_rangka' => 'required',
+            'no_plat' => 'required',
+            'no_mesin' => 'required',
             'warna' => 'required',
-            'mesin' => 'required',
-            'nama'=>'required',
-            'plat'=>'required',
+            // 'jenis' => 'required',
+            // 'warna' => 'required',
+            // 'mesin' => 'required',
+            // 'nama' => 'required',
+            // 'plat' => 'required',
             // 'pemilik'=>'required',
             // 'password' => 'required',
 
         ]);
-        
-        $kendaraan = Kendaraan::where('id', $kendaraan->id)->update([
-            'jenis' => $request->jenis,
-            'warna'=> $request->warna,
-            'mesin'=> $request->mesin,
-            'nama'=>$request->nama,
-            'plat'=>$request->plat,
+
+        $kendaraan = DB::table("kendaraan")->where('id', $id)->update([
+            'nama' => $request->nama,
+            'id_jenis' => $request->id_jenis,
+            'no_rangka' => $request->no_rangka,
+            'no_plat' => $request->no_plat,
+            'no_mesin' => $request->no_mesin,
+            'warna' => $request->warna,
+            // 'jenis' => $request->jenis,
+            // 'warna' => $request->warna,
+            // 'mesin' => $request->mesin,
+            // 'nama' => $request->nama,
+            // 'plat' => $request->plat,
             // 'pemilik'=>$request->pemilik,
         ]);
         // dd($kendaraan);
-        return redirect()->route('kendaraan.index')->with('success','Post updated successfully');
+        return redirect()->route('kendaraan.index')->with('success', 'Post updated successfully');
     }
 
     /**
@@ -122,11 +149,36 @@ class KendaraanController extends Controller
      * @param  \App\Models\Kendaraan  $kendaraan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kendaraan $kendaraan)
+    public function destroy($id)
     {
-        $kendaraan->delete();
-  
+        $del = DB::table('kendaraan')->where('id', $id);
+        $del->delete();
+
         return redirect()->route('kendaraan.index')
-                        ->with('success','Post deleted successfully');
+            ->with('success', 'Post deleted successfully');
+    }
+    public function lihat($id)
+    {
+        $foto = DB::table('kendaraan_foto')->where('id_kendaraan', $id)->get();
+        return view('kendaraan.foto', compact('id', 'foto'));
+    }
+    public function fotoupload(Request $request, $id)
+    {
+        $file = $request->file('foto');
+
+        // nama file
+        echo 'File Name: ' . $file->getClientOriginalName();
+        echo '<br>';
+
+        // ekstensi file
+        echo 'File Extension: ' . $file->getClientOriginalExtension();
+        echo '<br>';
+        $tujuan_upload = 'files/kendaraan/';
+
+        // upload file
+        $nama = $file->getClientOriginalName();
+        $file->move($tujuan_upload, $nama);
+        DB::table('kendaraan_foto')->insert(['file' => $nama, 'id_kendaraan' => $id]);
+        return back();
     }
 }
