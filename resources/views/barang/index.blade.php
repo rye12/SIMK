@@ -4,8 +4,6 @@
 
 <div class="row">
     <div class="col-xl-12">
-
-
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Data Barang</h6>
