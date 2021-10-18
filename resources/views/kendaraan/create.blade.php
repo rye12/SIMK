@@ -31,15 +31,16 @@
     <label for="exampleFormControlInput1">Jenis Kendaraan</label>
     <input name="id_jenis" type="jenis" class="form-control" id="exampleFormControlInput1" autocomplete="off">
   </div> -->
+  <div class="form-inline">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">No. Rangka</label>
+      <input name="no_rangka" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
+    </div>
 
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No. Rangka</label>
-    <input name="no_rangka" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
-  </div>
-
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No. Plat</label>
-    <input name="no_plat" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">No. Plat</label>
+      <input name="no_plat" type="text" class="form-control" id="exampleFormControlInput1" autocomplete="false">
+    </div>
   </div>
 
   <div class="form-group">
