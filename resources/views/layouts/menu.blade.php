@@ -84,20 +84,36 @@
 					<a href="#" class="nav-link"><i class="icon-wrench"></i> <span>Servis</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="../seed/layout_nav_horizontal.html" class="nav-link">Data Servis</a></li>
+						<li class="nav-item"><a href="{{ route('servis.index') }}" class="nav-link">Data Servis</a></li>
 						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
 
 					</ul>
 				</li>
 
 				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-box"></i> <span>Barang</span></a>
+					<a href="#" class="nav-link"><i class="icon-box"></i> <span>Gudang</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
 						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Data Barang</a></li>
 						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
 
 					</ul>
+					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Barang Masuk</a></li>
+						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
+
+					</ul>
+					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Barang Keluar</a></li>
+						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
+
+					</ul>
+					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Stock</a></li>
+						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
+
+					</ul>
+
 				</li>
 				<!-- /main -->
 

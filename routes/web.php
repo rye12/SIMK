@@ -7,6 +7,7 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
 
+use App\Http\Controllers\ServisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,14 @@ Route::DELETE('/pegawai/{id}', 'App\Http\Controllers\PegawaiController@destroy')
 //barang
 Route::resource('barang', BarangController::class);
 Route::resource('barang', 'App\Http\Controllers\BarangController');
+Route::resource('barang_kategori', 'App\Http\Controllers\BarangController');
+Route::get('barang_kategori', 'App\Http\Controllers\BarangController@create');
+Route::DELETE('/kendaraan/{id}', 'App\Http\Controllers\KendaraanController@destroy');
+
+
+//servis
+Route::resource('servis', ServisController::class);
+Route::resource('servis', 'App\Http\Controllers\ServisController');
+Route::get('servis/lihat/{id}', 'App\Http\Controllers\KendaraanController@lihat')->name('servis.foto');
+Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fotoupload')->name('servis.foto.upload');
+Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
