@@ -11,8 +11,11 @@ class ServisController extends Controller
     public function index()
     {
 
-        $data = DB::table('servis')->get();
-        //$data1 = DB::table('users')->get();
+        $data = DB::table('servis as s')
+        ->leftjoin('users as t', 's.id_pegawai', 't.id')
+        ->select("s.*","t.name as nama")
+        ->get();
+        
 
         return view('servis.index', compact('data'));
     }
@@ -35,7 +38,8 @@ class ServisController extends Controller
             'tanggal' => $request->tanggal,
             'keterangan' => $request->keterangan
         ];
-        DB::table('servis')->insert('servis');
+        DB::table('servis')->insert($servis);
+        return redirect()->back()->with('success', 'Post updated successfully');
     }
 
     public function create()
@@ -45,8 +49,9 @@ class ServisController extends Controller
 
     public function edit($id)
     {
-        $servis = DB::table("users")->where('id',$id) ->first();
-        return view('servis.edit', compact('servis'));
+        $servis = DB::table("servis")->where('id',$id)->first();
+        $nama = DB::table("users")->get();
+        return view('servis.edit', compact('servis','nama'));
     }
 
     /**
@@ -68,7 +73,7 @@ class ServisController extends Controller
             'keterangan' => 'required',
         ]);
 
-        $pegawai = DB::table("users")->where('id',$id)->update([
+        $servis = DB::table('servis')->where('id',$id)->update([
             'id_kendaraan' => $request->id_kendaraan,
             'id_pegawai' => $request->id_pegawai,
             'kebutuhan_sekarang' => $request->kebutuhan_sekarang,
