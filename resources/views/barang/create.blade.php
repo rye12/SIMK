@@ -1,6 +1,4 @@
 
-
-
 <form action="{{ route('barang.store') }}" method="POST">
     @csrf
     <div class="form-group">

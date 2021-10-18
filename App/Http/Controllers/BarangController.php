@@ -9,11 +9,7 @@ use Hash;
 
 class BarangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $data = DB::table('barang')->get();
@@ -75,7 +71,7 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('barang.edit',compact('barang'));
     }
 
     /**
@@ -85,9 +81,21 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Barang $barang)
     {
-        //
+        $data = $request->validate([
+            'kode' => 'required',
+            'nama' => 'required',
+            'deskripsi' => 'required', 
+        ]);
+        
+        $kendaraan = Barang::where('id', $barang->id)->update([
+            'kode' => $request->kode,
+            'nama'=> $request->nama,
+            'deskripsi'=> $request->deskripsi,
+        ]);
+        // dd($kendaraan);
+        return redirect()->route('barang.index')->with('success','Post updated successfully');
     }
 
     /**

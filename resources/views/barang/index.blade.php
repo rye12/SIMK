@@ -4,19 +4,23 @@
 
 <div class="row">
     <div class="col-xl-12">
+
+
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Data Barang</h6>
-                <a href="{{ route('barang.create') }}" class="btn btn-sm btn-success modal-show" >New Barang</a>
+                <a href="{{ route('barang.create') }}" class="btn btn-sm btn-success modal-show" >New User</a>
 
             </div>
             <div class="card-body py-0">
                 <table id="myTable" class='table'>
                     <thead>
-                    <tr>
+                    <tr>    
+                        <th>No</th>
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Deskripsi</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <?php
