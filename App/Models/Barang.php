@@ -11,7 +11,7 @@ class Barang extends Model
     protected $fillable = [
         'kode','nama','deskripsi'
     ];
-    public function user(){
+    public function barang(){
         return $this->belongsTo(User::class);
     }
 }
