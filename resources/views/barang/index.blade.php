@@ -9,7 +9,8 @@
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Data Barang</h6>
-                <a href="{{ route('barang.create') }}" class="btn btn-sm btn-success modal-show" >New User</a>
+                <a href="{{ route('barang.create') }}" class="btn btn-sm btn-success modal-show" >
+                    <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Barang</a>
 
             </div>
             <div class="card-body py-0">
@@ -17,7 +18,7 @@
                     <thead>
                     <tr>    
                         <th>No</th>
-                        <th>Kode</th>
+                        <th>Kategori</th>
                         <th>Nama</th>
                         <th>Deskripsi</th>
                         <th>Aksi</th>
@@ -33,7 +34,7 @@
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->kode }}
+                            {{ $r->kategori }}
                         </td>
                         <td>
                             {{ $r->nama }}
