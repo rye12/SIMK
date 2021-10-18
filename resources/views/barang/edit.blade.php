@@ -2,17 +2,23 @@
         @csrf
         @method('PUT')
 
-        @foreach($kategori as $k)
         <div class="form-group">
-             <label for="formGroupExampleInput">Kategori</label>
-            <input name="kategori" type="text" class="form-control" id="formGroupExampleInput" {{($k->id==barang->id_kategori?"checked";"")}} value="{{$k->id}}" >
+            <label for="position-option">Kategori</label>
+            <select class="form-control" id="position-option" name="id_kategori">
+                @foreach ($kategori as $kategori)
+                <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                @endforeach
+            </select>
         </div>
-        @endforeach
 
         <!-- <div class="form-group">
              <label for="formGroupExampleInput">Kode</label>
             <input name="kode" type="text" class="form-control" id="formGroupExampleInput" value="{{ $barang->kode }}" >
         </div> -->
+        <div class="form-group">
+            <label for="exampleFormControlInput">Kode</label>
+            <input name="kode" type="text" class="form-control" id="formGroupExampleInput"  value="{{ $barang->kode }}"autocomplete="off">
+        </div>
         <div class="form-group">
              <label for="formGroupExampleInput">Nama</label>
             <input name="nama" type="text" class="form-control" id="formGroupExampleInput" value="{{ $barang->nama }}" autocomplete="off" >
