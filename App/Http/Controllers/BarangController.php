@@ -40,7 +40,6 @@ class BarangController extends Controller
     public function store(Request $request)
     {
        
-
         $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
@@ -86,18 +85,16 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'kode' => 'required',
-            'nama' => 'required',
-            'deskripsi' => 'required',
-        ]);
-
-        $barang = DB::table('barang')->where('id', $id)->update([
+        
+        $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
-        ]);
-        // dd($kendaraan);
+            'id_kategori' => $request->id_kategori,
+        ];
+
+        DB::table('barang')->insert($barang);
+
         return redirect()->route('barang.index')->with('success', 'Post updated successfully');
     }
 
