@@ -14,4 +14,7 @@ class Barang extends Model
     public function barang(){
         return $this->belongsTo(User::class);
     }
+    public function kategori(){
+        return $this->hasMany(Kategori::class);
+    }
 }

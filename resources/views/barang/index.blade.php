@@ -18,6 +18,7 @@
                     <thead>
                     <tr>    
                         <th>No</th>
+                        <th>Kode</th>
                         <th>Kategori</th>
                         <th>Nama</th>
                         <th>Deskripsi</th>
@@ -32,6 +33,9 @@
                     <tr>
                         <td>
                             {{ $no++ }}
+                        </td>
+                        <td>
+                            {{ $r->kode }}
                         </td>
                         <td>
                             {{ $r->kategori }}

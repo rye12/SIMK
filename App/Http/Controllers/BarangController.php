@@ -27,8 +27,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        
-        return view('barang.create');
+        $kategori = DB::table('barang_kategori')->get();
+        return view('barang.create', compact('kategori'));
     }
 
     /**
@@ -39,16 +39,13 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'kode' => 'required',
-            'nama' => 'required',
-            'deskripsi' => 'required',
-        ]);
+       
 
         $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'id_kategori' => $request->id_kategori,
         ];
 
         DB::table('barang')->insert($barang);
