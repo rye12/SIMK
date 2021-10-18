@@ -9,11 +9,10 @@ class Kendaraan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'jenis','warna','mesin','user_id'
+        'id_jenis', 'no_rangka', 'no_plat', 'no_mesin', 'warna'
     ];
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-
 }
-
