@@ -64,11 +64,9 @@ Route::post('/pegawai/kendaraan-servis-simpan/{id}', 'App\Http\Controllers\Pegaw
 //barang
 Route::resource('barang',BarangController::class);
 Route::resource('barang', 'App\Http\Controllers\BarangController');
+Route::DELETE('/kendaraan/{id}', 'App\Http\Controllers\KendaraanController@destroy');
 
 //servis
 Route::resource('servis', ServisController::class);
 Route::resource('servis','App\Http\Controllers\ServisController');
-Route::resource('barang', BarangController::class);
-Route::resource('barang', 'App\Http\Controllers\BarangController');
 
-Route::DELETE('/kendaraan/{id}', 'App\Http\Controllers\KendaraanController@destroy');
