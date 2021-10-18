@@ -72,4 +72,6 @@ Route::DELETE('/kendaraan/{id}', 'App\Http\Controllers\KendaraanController@destr
 //servis
 Route::resource('servis', ServisController::class);
 Route::resource('servis','App\Http\Controllers\ServisController');
+Route::get('servis/lihat/{id}', 'App\Http\Controllers\KendaraanController@lihat')->name('servis.foto');
+Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fotoupload')->name('servis.foto.upload');
 
