@@ -4,18 +4,24 @@
         @method('POST')
         <div class="form-group">
             <label for="exampleFormControlInput1">Foto</label>
-            <input name="foto" type="file" class="form-control">
+            <input name="foto" type="file" class="form-control" require>
         </div>
 
         <button type="submit" class="btn btn-primary">
             <i class="icon-file-upload2" style="margin-right: 5px;"></i>Upload</button>
     </form>
 </div>
-<!-- <div class="row">
+<center>
+    <h4>Foto Kendaraan</h4>
+</center>
+
+<hr>
+<div class="row">
+
+
+
     @foreach($foto as $f)
-    <div class="col-md-6">
-        <img src="{{url('files/kendaraan/'.$f->$file)}}" />
-    </div>
+    <img class="col-md-6" src="{{url('files/kendaraan/'.$f->file)}}" />
     @endforeach
 
-</div> -->
+</div>

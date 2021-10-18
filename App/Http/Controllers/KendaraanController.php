@@ -165,14 +165,6 @@ class KendaraanController extends Controller
     public function fotoupload(Request $request, $id)
     {
         $file = $request->file('foto');
-
-        // nama file
-        echo 'File Name: ' . $file->getClientOriginalName();
-        echo '<br>';
-
-        // ekstensi file
-        echo 'File Extension: ' . $file->getClientOriginalExtension();
-        echo '<br>';
         $tujuan_upload = 'files/kendaraan/';
 
         // upload file
