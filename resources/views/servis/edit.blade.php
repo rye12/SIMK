@@ -1,4 +1,4 @@
-<form action="{{ route('servis.edit',$servis->id) }}" method="POST">
+<form action="{{ route('servis.update',$servis->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">
@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Nama</label>
-    <input name="nama" type="jenis" class="form-control" id="nama" value="{{$users->name}}"placeholder="Masukkan nama pemilik" autocomplete="off" >
+    <input name="nama" type="jenis" class="form-control" id="nama" value="{{$servis->id_pegawai}}"placeholder="Masukkan nama pemilik" autocomplete="off" >
   </div>
     
   <div class="form-group">
