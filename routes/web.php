@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 // use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
-
+use App\Http\Controllers\ServisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +65,7 @@ Route::post('/pegawai/kendaraan-servis-simpan/{id}','App\Http\Controllers\Pegawa
 //barang
 Route::resource('barang',BarangController::class);
 Route::resource('barang', 'App\Http\Controllers\BarangController');
+
+//servis
+Route::resource('servis', ServisController::class);
+Route::resource('servis','App\Http\Controllers\ServisController');
