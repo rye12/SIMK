@@ -70,11 +70,30 @@ class ServisController extends Controller
         return redirect()->route('servis.index')->with('success', 'Post update successfully');
     }
 
-    public function destroy(Servis $servis)
+    public function destroy(Servis $servis, $id)
     {
+        $servis = DB::table('servis')->where('id', $id);
         $servis->delete();
 
         return redirect()->route('servis.index')
             ->with('success','Post deleted successfully');
+    }
+
+
+    public function lihat($id)
+    {
+        $foto = DB::table('servis_foto')->where('id_servis', $id)->get();
+        return view('servis.foto', compact('id','foto'));
+    }
+
+    public function fotoupload(Request $request, $id)
+    {
+        $file = $request->file('foto');
+        $tujuan_upload = 'files/servis/';
+
+        $nama = $file->getClientOriginalName();
+        $file->move($tujuan_upload, $nama);
+        DB::table('servis_foto')->insert(['file' => $nama, 'id_servis' => $id, 'deskripsi' => $request->deskripsi]);
+        return back();
     }
 }

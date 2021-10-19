@@ -3,21 +3,22 @@
     @method('PUT')
     <div class="form-group">
     <label for="exampleFormControlInput1">Plat</label>
-    <input name="plat" type="text" class="form-control" id="plat" value="{{$servis->id_kendaraan}}" placeholder="Masukkan Plat Nomor Kendaraan" autocomplete="off" >
+    <input name="id_kendaraan" type="text" class="form-control" id="plat" value="{{$servis->id_kendaraan}}" placeholder="Masukkan Plat Nomor Kendaraan" autocomplete="off" >
   </div>
+
   <div class="form-group">
-    <label for="exampleFormControlInput1">Nama</label>
-    <input name="nama" type="jenis" class="form-control" id="nama" value="{{$servis->id_pegawai}}"placeholder="Masukkan nama pemilik" autocomplete="off" >
+    <label for="exampleFormControlInput1">Id pegawai</label>
+    <input name="id_pegawai" type="jenis" class="form-control" id="nama" value="{{$servis->id_pegawai}}"placeholder="Masukkan id pegawai" autocomplete="off" >
   </div>
     
   <div class="form-group">
     <label for="exampleFormControlInput1">Kebutuhan Sekarang</label>
-    <input name="kebutuhan-sekarang" type="text" class="form-control" id="kebutuhan_sekarang" value="{{$servis->kebutuhan_sekarang}}" placeholder="Masukkan kebutuhan kendaraan sekarang" autocomplete="off">
+    <input name="kebutuhan_sekarang" type="text" class="form-control" id="kebutuhan_sekarang" value="{{$servis->kebutuhan_sekarang}}" placeholder="Masukkan kebutuhan kendaraan sekarang" autocomplete="off">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Kebutuhan Selanjutnya</label>
-    <input name="kebutuhan-selanjutnya" type="text" class="form-control" id="kebutuhan_selanjutnya" value="{{$servis->kebutuhan_selanjutnya}}" placeholder="Masukkan kebutuhan kendaraan selanjutnya" autocomplete="off">
+    <input name="kebutuhan_selanjutnya" type="text" class="form-control" id="kebutuhan_selanjutnya" value="{{$servis->kebutuhan_selanjutnya}}" placeholder="Masukkan kebutuhan kendaraan selanjutnya" autocomplete="off">
   </div>
 
   <div class="form-group">

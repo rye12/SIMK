@@ -17,7 +17,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Plat Nomor</th>
-                            <th>Nama Pemilik</th>
+                            <th>ID Pegawai</th>
                             <th>Kebutuhan Sekarang</th>
                             <th>Kebutuhan Selanjutnya</th>
                             <th>Foto</th>
@@ -38,7 +38,7 @@
                             {{ $r->id_kendaraan }}
                         </td>
                         <td>
-                            {{ $r->nama }}
+                            {{ $r->id_pegawai }}
                         </td>
                         <td>
                             {{ $r->kebutuhan_sekarang }}

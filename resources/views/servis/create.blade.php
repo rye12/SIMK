@@ -9,11 +9,6 @@
     <label for="exampleFormControlInput1">Id Pegawai</label>
     <input name="id_pegawai" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan id pegawai" autocomplete="off" >
   </div>
-
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Nama</label>
-    <input name="nama" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama pegawai" autocomplete="off" >
-  </div>
     
   <div class="form-group">
     <label for="exampleFormControlInput1">Kebutuhan Sekarang</label>
