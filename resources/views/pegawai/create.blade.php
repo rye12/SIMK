@@ -1,24 +1,55 @@
-<form action="{{ route('pegawai.store') }}" method="POST">
-    @csrf
-    <div class="form-group">
-    <label for="exampleFormControlInput1">NIK</label>
-    <input name="nik" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan kendaraan anda" >
-  </div>
+<form action="{{ route('pegawai.store') }}" method="POST" enctype="multipart/form-data">
+  @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Nama</label>
-    <input name="nama" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nomor kendaraan anda" autocomplete="off" >
+    <input name="nama" type="text" class="form-control" autofocus="true" autocomplete="off">
   </div>
-    
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">No. Handphone</label>
+      <input name="no_hp" type="text" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">Alamat</label>
+      <input name="alamat" type="text" class="form-control" autocomplete="off">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">NIP</label>
+      <input name="nip" type="text" class="form-control" autocomplete="off">
+    </div>
+    <!-- <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">Jabatan</label>
+      <input name="id_jabatan" type="text" class="form-control" autocomplete="off">
+    </div> -->
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlInput1">Jabatan</label>
+      <select class="custom-select" name="id_jabatan">
+        <option selected>Silahkan pilih jabatan</option>
+        @foreach ($jabatan as $j)
+        <option value="{{$j->id}}">{{$j->nama}}</option>
+        @endforeach
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="exampleFormControlInput1">Email</label>
+      <input name="email" type="text" class="form-control" autocomplete="off">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="exampleFormControlInput1">Username</label>
+      <input name="username" type="text" class="form-control" placeholder="Contoh: someone012" autocomplete="off">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="exampleFormControlInput1">Password</label>
+      <input name="password" type="password" class="form-control" autocomplete="off">
+    </div>
+  </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Alamat</label>
-    <input name="alamat" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan jenis kendaraan anda" >
+    <label for="exampleFormControlInput1">Foto</label>
+    <input name="foto" type="file" class="form-control">
   </div>
 
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No. Hp</label>
-    <input name="no_hp" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan warna kendaraan Anda" >
-  </div>
-  
-
-  
   <button type="submit" class="btn btn-primary">Submit</button>

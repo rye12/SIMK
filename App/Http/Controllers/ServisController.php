@@ -22,14 +22,9 @@ class ServisController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'id_kendaraan' => 'required',
-            'id_pegawai' => 'required',
-            'kebutuhan_sekarang' => 'required',
-            'kebutuhan_selanjutnya' => 'required',
-            'tanggal' => 'required',
-            'keterangan' => 'required',
-        ]);
+        $nama = [
+            'nama'=> $request->nama
+        ];
         $servis = [
             'id_kendaraan' => $request->id_kendaraan,
             'id_pegawai' => $request->id_pegawai,
@@ -64,15 +59,6 @@ class ServisController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'id_kendaraan' => 'required',
-            'id_pegawai' => 'required',
-            'kebutuhan_sekarang' => 'required',
-            'kebutuhan_selanjutnya' => 'required',
-            'tanggal' => 'required',
-            'keterangan' => 'required',
-        ]);
-
         $servis = DB::table('servis')->where('id',$id)->update([
             'id_kendaraan' => $request->id_kendaraan,
             'id_pegawai' => $request->id_pegawai,

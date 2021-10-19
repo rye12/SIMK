@@ -20,6 +20,10 @@ class KendaraanController extends Controller
             ->select("a.*", "b.nama as jenis")
             ->get();
         //$data = Kendaraan::with('user')->get();
+        // $pemilik = DB::table('kendaraan_pegawai as a')
+        //     ->leftjoin('pegawai as b', 'a.id_pegawai', 'b.id')
+        //     ->select('a.*', 'b.nama as peg')
+        //     ->get();
 
         return view('kendaraan.index', compact('data'));
     }
@@ -31,7 +35,6 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-
 
         return view('kendaraan.create');
     }
@@ -52,15 +55,7 @@ class KendaraanController extends Controller
             'no_mesin' => 'required',
             'warna' => 'required',
 
-            // 'jenis' => 'required',
-            // 'warna' => 'required',
-            // 'no_mesin' => 'required',
-            // 'nama' => 'required',
-            // 'plat' => 'required',
-            // 'password' => 'required',
-
         ]);
-
         $kendaraan = [
             'nama' => $request->nama,
             'id_jenis' => $request->id_jenis,
@@ -68,11 +63,6 @@ class KendaraanController extends Controller
             'no_plat' => $request->no_plat,
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
-            // 'jenis' => $request->jenis,
-            // 'warna' => $request->warna,
-            // 'mesin' => $request->mesin,
-            // 'nama' => $request->nama,
-            // 'plat' => $request->plat,
         ];
         DB::table('kendaraan')->insert($kendaraan);
         // dd($kendaraan);
@@ -165,14 +155,6 @@ class KendaraanController extends Controller
     public function fotoupload(Request $request, $id)
     {
         $file = $request->file('foto');
-
-        // nama file
-        echo 'File Name: ' . $file->getClientOriginalName();
-        echo '<br>';
-
-        // ekstensi file
-        echo 'File Extension: ' . $file->getClientOriginalExtension();
-        echo '<br>';
         $tujuan_upload = 'files/kendaraan/';
 
         // upload file

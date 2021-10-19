@@ -67,12 +67,10 @@
 						</span>
 					</a>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-users"></i> <span>User</span></a>
-
-					<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-						<li class="nav-item"><a href="#" class="nav-link active">Daftar User</a></li>
-					</ul>
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="icon-users"></i>
+						<span>User</span></a>
 				</li>
 				<li class="nav-item">
 					<a href="{{ route('kendaraan.index') }}" class="nav-link">
@@ -80,40 +78,61 @@
 						<span>Kendaraan</span>
 					</a>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-wrench"></i> <span>Servis</span></a>
-
-					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('servis.index') }}" class="nav-link">Data Servis</a></li>
-						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
-
-					</ul>
+				<li class="nav-item">
+					<a href="{{ route('servis.index') }}" class="nav-link">
+						<i class="icon-wrench"></i>
+						<span>Servis</span></a>
 				</li>
 
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-box"></i> <span>Gudang</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Data Barang</a></li>
-						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
-
+						<li class="nav-item">
+							<a href="{{ route('barang.index') }}" class="nav-link">
+								<i class="icon-stack-text"></i><span>Data Barang</span></a>
+						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Barang Masuk</a></li>
-						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
-
+						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">
+								<i class="icon-box-add"></i><span>Barang Masuk</span></a>
+						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Barang Keluar</a></li>
-						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
-
+						<li class="nav-item">
+							<a href="{{ route('barang.index') }}" class="nav-link">
+								<i class="icon-box-remove"></i><span>Barang Keluar</span></a>
+						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">Stock</a></li>
-						<!-- <li class="nav-item"><a href="../seed/sidebar_none.html" class="nav-link">Tambah Servis</a></li> -->
-
+						<li class="nav-item">
+							<a href="{{ route('barang.index') }}" class="nav-link">
+								<i class="icon-cabinet"></i><span>Stok Barang</span></a>
+						</li>
 					</ul>
 
+				</li>
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-file-text2"></i> <span>Pengajuan</span></a>
+
+					<ul class="nav nav-group-sub">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="icon-cube"></i> <span>Pengajuan Barang</span></a>
+						</li>
+					</ul>
+					<ul class="nav nav-group-sub">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="icon-coins"></i> <span>Pengajuan Pajak</span></a></a>
+						</li>
+					</ul>
+					<ul class="nav nav-group-sub">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="icon-gas"></i> <span>Pengajuan BBM</span></a></a>
+						</li>
+					</ul>
 				</li>
 				<!-- /main -->
 
