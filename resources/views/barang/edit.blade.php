@@ -5,9 +5,9 @@
         <div class="form-group">
             <label for="position-option">Kategori</label>
             <select class="form-control" id="position-option" name="id_kategori">
-                @foreach ($kategori as $kategori)
-                <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
-                @endforeach
+            @foreach ($kategori as $k)
+            <option {{($k->id==$barang->id_kategori?"selected":"")}} value="{{$k->id}}">{{$k->nama}}</option>
+            @endforeach
             </select>
         </div>
 

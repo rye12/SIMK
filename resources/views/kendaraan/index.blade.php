@@ -58,12 +58,7 @@
                         </td>
                         <td><a href="{{ route('kendaraan.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>
-                            @if(!empty($r->user->name))
-                            {{ $r->user->name }}
-                            @else
                             -
-                            @endif
-
                         </td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('kendaraan.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
