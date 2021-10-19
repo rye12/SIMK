@@ -93,7 +93,7 @@ class BarangController extends Controller
             'id_kategori' => $request->id_kategori,
         ];
 
-        DB::table('barang')->insert($barang);
+        DB::table('barang')->where('id', $id)->update($barang);
 
         return redirect()->route('barang.index')->with('success', 'Post updated successfully');
     }
