@@ -67,12 +67,10 @@
 						</span>
 					</a>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-users"></i> <span>User</span></a>
-
-					<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-						<li class="nav-item"><a href="#" class="nav-link active">Daftar User</a></li>
-					</ul>
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="icon-users"></i>
+						<span>User</span></a>
 				</li>
 				<li class="nav-item">
 					<a href="{{ route('kendaraan.index') }}" class="nav-link">
@@ -80,12 +78,10 @@
 						<span>Kendaraan</span>
 					</a>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-wrench"></i> <span>Servis</span></a>
-
-					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('servis.index') }}" class="nav-link">Data Servis</a></li>
-					</ul>
+				<li class="nav-item">
+					<a href="{{ route('servis.index') }}" class="nav-link">
+						<i class="icon-wrench"></i>
+						<span>Servis</span></a>
 				</li>
 
 				<li class="nav-item nav-item-submenu">
