@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
-
+use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
 
 /*
@@ -81,3 +81,7 @@ Route::resource('servis', 'App\Http\Controllers\ServisController');
 Route::get('servis/lihat/{id}', 'App\Http\Controllers\ServisController@lihat')->name('servis.foto');
 Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fotoupload')->name('servis.foto.upload');
 Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
+
+//bbm
+Route::resource('bbm', BBMController::class);
+Route::resource('bbm', 'App\Http\Controllers\BBMController');
