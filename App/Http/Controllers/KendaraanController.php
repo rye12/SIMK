@@ -15,16 +15,12 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        $data = DB::table('kendaraan as a')
-            ->leftjoin('kendaraan_jenis as b', 'a.id_jenis', 'b.id')
-            ->select("a.*", "b.nama as jenis")
+        $data = DB::table('kendaraan as c')
+            ->leftjoin('kendaraan_pegawai as d', 'd.id_kendaraan', '=', 'c.id')
+            ->leftjoin('pegawai as e', 'e.id', '=', 'd.id_pegawai')
+            ->leftjoin('kendaraan_jenis as b', 'c.id_jenis', 'b.id')
+            ->select('c.*', 'e.nama as pemilik', 'b.nama as jenis')
             ->get();
-        //$data = Kendaraan::with('user')->get();
-        // $pemilik = DB::table('kendaraan_pegawai as a')
-        //     ->leftjoin('pegawai as b', 'a.id_pegawai', 'b.id')
-        //     ->select('a.*', 'b.nama as peg')
-        //     ->get();
-
         return view('kendaraan.index', compact('data'));
     }
 

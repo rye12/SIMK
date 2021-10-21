@@ -17,47 +17,53 @@ class PegawaiController extends Controller
         return view('pegawai.index', compact('data'));
     }
 
-    // public function kendaraan($id)
-    // {
-    //     $data = DB::table('kendaraan_pegawai as a')
-    //         ->leftjoin('kendaraans as b', 'b.id', 'a.id_kendaraan')
-    //         ->leftjoin('users as c', 'c.id', 'a.id_pegawai')
-    //         ->where('a.id_pegawai', $id)
-    //         ->select('*', 'a.id as id_kendaraan_pegawai')
-    //         ->get();
-    //     return view('pegawai.kendaraan', compact('data', 'id'));
-    // }
+    public function kendaraan($id)
+    {
+        $data = DB::table('kendaraan_pegawai as a')
+            ->leftjoin('kendaraan as b', 'b.id', 'a.id_kendaraan')
+            ->leftjoin('pegawai as c', 'c.id', 'a.id_pegawai')
+            ->leftjoin('kendaraan_jenis as d', 'b.id_jenis', 'd.id')
+            ->where('a.id_pegawai', $id)
+            ->select('b.*', 'a.id as id_kendaraan_pegawai', 'd.nama as jenis', 'a.id as id_kendaraanPegawai', 'a.status')
+            ->get();
+        return view('pegawai.kendaraan', compact('data', 'id'));
+    }
 
-    // public function kendaraanTambah($id)
-    // {
-    //     $id = $id;
-    //     $kendaraan = DB::table('kendaraans')->get();
-    //     return view('pegawai.kendaraan-tambah', compact('id', 'kendaraan'));
-    // }
-    // public function kendaraanSimpan(Request $request)
-    // {
-    //     DB::table('kendaraan_pegawai')->insert([
-    //         'id_pegawai' => $request->id_pegawai,
-    //         'id_kendaraan' => $request->id_kendaraan,
-    //     ]);
-    //     return back();
-    // }
+    public function kendaraanTambah($id)
+    {
+        $id = $id;
+        $kendaraan = DB::table('kendaraan')->get();
+        return view('pegawai.kendaraan-tambah', compact('id', 'kendaraan'));
+    }
+    public function kendaraanSimpan(Request $request)
+    {
+        DB::table('kendaraan_pegawai')->insert([
+            'id_pegawai' => $request->id_pegawai,
+            'id_kendaraan' => $request->id_kendaraan,
+        ]);
+        return back();
+    }
 
-    // public function kendaraanHapus($id)
-    // {
-    //     DB::table('kendaraan_pegawai')->where('id', $id)->delete();
-    //     return back();
-    // }
-
-    // public function kendaraanServis($id)
-    // {
-    //     $data = DB::table('servis as a')
-    //         ->leftjoin('kendaraans as b', 'b.id', 'a.id_kendaraan')
-    //         ->leftjoin('users as c', 'c.id', 'a.id_pegawai')
-    //         ->where('a.id_kendaraan', $id)
-    //         ->get();
-    //     return view('pegawai.kendaraan-servis', compact('data', 'id'));
-    // }
+    public function kendaraanHapus($id)
+    {
+        DB::table('kendaraan_pegawai')->where('id', $id)->delete();
+        return back();
+    }
+    public function kendaraanStatus($id)
+    {
+        $check = DB::table('kendaraan_pegawai')->where('id', $id)->first();
+        $st = $check->status == 1 ? 0 : 1;
+        DB::table('kendaraan_pegawai')->where('id', $id)->update(['status' => $st]);
+    }
+    public function kendaraanServis($id)
+    {
+        $data = DB::table('servis as a')
+            ->leftjoin('kendaraans as b', 'b.id', 'a.id_kendaraan')
+            ->leftjoin('users as c', 'c.id', 'a.id_pegawai')
+            ->where('a.id_kendaraan', $id)
+            ->get();
+        return view('pegawai.kendaraan-servis', compact('data', 'id'));
+    }
 
     // public function servisTambah($id)
     // {

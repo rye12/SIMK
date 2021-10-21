@@ -58,6 +58,9 @@
                                     <i class="icon-bin"></i>
                                 </button>
                             </form>
+                            <a href="{{ route('pegawai.kendaraan',$r->id) }}" class="btn btn-primary btn-sm">
+                                <i class="icon-car"></i>
+                            </a>
                         </td>
 
                     </tr>
