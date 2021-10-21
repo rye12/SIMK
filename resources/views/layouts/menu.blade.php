@@ -83,7 +83,6 @@
 						<i class="icon-wrench"></i>
 						<span>Servis</span></a>
 				</li>
-
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-box"></i> <span>Gudang</span></a>
 
@@ -123,7 +122,7 @@
 					</ul>
 					<ul class="nav nav-group-sub">
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="{{ route('pajak.index') }}" class="nav-link">
 								<i class="icon-coins"></i> <span>Pengajuan Pajak</span></a></a>
 						</li>
 					</ul>

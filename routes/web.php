@@ -6,8 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
-
 use App\Http\Controllers\ServisController;
+use App\Http\Controllers\PajakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,3 +81,7 @@ Route::resource('servis', 'App\Http\Controllers\ServisController');
 Route::get('servis/lihat/{id}', 'App\Http\Controllers\ServisController@lihat')->name('servis.foto');
 Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fotoupload')->name('servis.foto.upload');
 Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
+
+//pajak
+Route::resource('pajak', BarangController::class);
+Route::resource('pajak', 'App\Http\Controllers\PajakController');
