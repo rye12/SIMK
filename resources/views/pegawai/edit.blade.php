@@ -29,7 +29,7 @@
             <select class="custom-select" name="id_jabatan">
                 <option></option>
                 @foreach ($jabatan as $j)
-                <option {{($j->id==$pegawai->id_jabatan?"selected":"")}} value="{{$j->id}}">{{$j->nama}}</option>
+                    <option {{($j->id==$pegawai->id_jabatan?"selected":"")}} value="{{$j->id}}">{{$j->nama}}</option>
                 @endforeach
             </select>
         </div>
