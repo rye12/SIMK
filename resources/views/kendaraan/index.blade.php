@@ -32,39 +32,39 @@
                     <?php
                     $no = 1;
                     ?>
-                    @foreach($data as $r)
+                    @foreach($data as $d)
 
                     <tr>
                         <td>
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->nama }}
+                            {{ $d->nama }}
                         </td>
                         <td>
-                            {{ $r->jenis }}
+                            {{ $d->jenis }}
                         </td>
                         <td>
-                            {{ $r->no_rangka }}
+                            {{ $d->no_rangka }}
                         </td>
                         <td>
-                            {{ $r->no_plat }}
+                            {{ $d->no_plat }}
                         </td>
                         <td>
-                            {{ $r->no_mesin }}
+                            {{ $d->no_mesin }}
                         </td>
                         <td>
-                            {{ $r->warna }}
+                            {{ $d->warna }}
                         </td>
-                        <td><a href="{{ route('kendaraan.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
+                        <td><a href="{{ route('kendaraan.foto',$d->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>
-                            -
+                            {{ $d->pemilik }}
                         </td>
                         <td class="d-flex flex-row">
-                            <a href="{{ route('kendaraan.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
+                            <a href="{{ route('kendaraan.edit',$d->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
                             </a>
-                            <form action="{{ route('kendaraan.destroy', $r->id) }}" method="POST">
+                            <form action="{{ route('kendaraan.destroy', $d->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">

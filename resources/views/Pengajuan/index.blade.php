@@ -8,10 +8,9 @@
 
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h6 class="card-title">Data Pegawai</h6>
-                <a href="{{ route('pegawai.create') }}" class="btn btn-sm btn-success modal-show">
-                    <i class="icon-user-plus" style="margin-right: 5px;"></i>
-                    Tambah Pegawai</a>
+                <h6 class="card-title">Pengajuan BBM</h6>
+                <a href="{{ route('kendaraan.create') }}" class="btn btn-sm btn-success modal-show">
+                    <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Pengajuan</a>
 
             </div>
             <div class="card-body py-0">
@@ -19,10 +18,14 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>No.Hp</th>
+                            <th>Model</th>
+                            <th>Jenis</th>
+                            <th>No. Rangka</th>
+                            <th>NO. Plat</th>
+                            <th>No. Mesin</th>
+                            <th>Warna</th>
+                            <th>Foto</th>
+                            <th>Pemilik</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -36,31 +39,39 @@
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->nip }}
-                        </td>
-                        <td>
                             {{ $r->nama }}
                         </td>
                         <td>
-                            {{ $r->alamat }}
+                            {{ $r->jenis }}
                         </td>
                         <td>
-                            {{ $r->no_hp }}
+                            {{ $r->no_rangka }}
+                        </td>
+                        <td>
+                            {{ $r->no_plat }}
+                        </td>
+                        <td>
+                            {{ $r->no_mesin }}
+                        </td>
+                        <td>
+                            {{ $r->warna }}
+                        </td>
+                        <td><a href="{{ route('kendaraan.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
+                        <td>
+                            -
                         </td>
                         <td class="d-flex flex-row">
-                            <a href="{{ route('pegawai.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
+                            <a href="{{ route('kendaraan.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
                             </a>
-                            <form action="{{ route('pegawai.destroy', $r->id) }}" method="POST">
+                            <form action="{{ route('kendaraan.destroy', $r->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">
                                     <i class="icon-bin"></i>
                                 </button>
+
                             </form>
-                            <a href="{{ route('pegawai.kendaraan',$r->id) }}" class="btn btn-primary btn-sm">
-                                <i class="icon-car"></i>
-                            </a>
                         </td>
 
                     </tr>
