@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Manajemen Kendaraan Dinas</title>
 
 	<!-- Global stylesheets -->
@@ -156,49 +157,49 @@
 		<!-- /main content -->
 
 	</div>
-	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-title">Silahkan Mengisi Data</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body" id="modal-body">
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-title">Silahkan Mengisi Data</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modal-body">
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- /page content -->
 	<script src="//cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 	<script>
-		$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
+		$(document).ready(function() {
+			$('#myTable').DataTable();
+		});
 
-$('body').on('click', '.modal-show', function (event) {
-        event.preventDefault();
-        var me = $(this),
-            url = me.attr('href'),
-            title = me.attr('title');
+		$('body').on('click', '.modal-show', function(event) {
+			event.preventDefault();
+			var me = $(this),
+				url = me.attr('href'),
+				title = me.attr('title');
 
-        $('#modal-title').text(title);
-        $('#modal-btn-save').removeClass('hide').text(me.hasClass('edit') ? 'Ubah' : 'Simpan');
+			$('#modal-title').text(title);
+			$('#modal-btn-save').removeClass('hide').text(me.hasClass('edit') ? 'Ubah' : 'Simpan');
 
-        $.ajax({
-        url: url,
-        dataType: 'html',
-        success: function(response){
-            $('#modal-body').html(response);
-        }
-        });
+			$.ajax({
+				url: url,
+				dataType: 'html',
+				success: function(response) {
+					$('#modal-body').html(response);
+				}
+			});
 
-        $('#modal').modal('show');
-    });
+			$('#modal').modal('show');
+		});
 	</script>
-	
+
 </body>
+
 </html>

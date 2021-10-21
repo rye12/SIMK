@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
 use App\Http\Controllers\PajakController;
 
@@ -32,7 +33,7 @@ Route::get('/', function () {
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('dashboard');
 })->name('dashboard');
 
@@ -57,11 +58,12 @@ Route::resource('pegawai', PegawaiController::class);
 Route::DELETE('/pegawai/{id}', 'App\Http\Controllers\PegawaiController@destroy');
 
 //Route::resource('pegawai', 'App\Http\Controllers\PegawaiController');
-//Route::get('/pegawai/kendaraan/{id}', 'App\Http\Controllers\PegawaiController@kendaraan')->name('pegawai.kendaraan');
-// Route::get('/pegawai/kendaraan-tambah/{id}', 'App\Http\Controllers\PegawaiController@kendaraanTambah')->name('pegawai.kendaraan.tambah');
-// Route::post('/pegawai/kendaraan-simpan/{id}', 'App\Http\Controllers\PegawaiController@kendaraanSimpan')->name('pegawai.kendaraan.simpan');
-// Route::DELETE('/pegawai/kendaraan-hapus/{id}', 'App\Http\Controllers\PegawaiController@kendaraanHapus')->name('pegawai.kendaraan.hapus');
-// //Route::get('/pegawai/kendaraan-servis/{id}','App\Http\Controllers\PegawaiController@kendaraanServis')->name('pegawai.kendaraan.servis');
+Route::get('/pegawai/kendaraan/{id}', 'App\Http\Controllers\PegawaiController@kendaraan')->name('pegawai.kendaraan');
+Route::get('/pegawai/kendaraan-tambah/{id}', 'App\Http\Controllers\PegawaiController@kendaraanTambah')->name('pegawai.kendaraan.tambah');
+Route::post('/pegawai/kendaraan-simpan/{id}', 'App\Http\Controllers\PegawaiController@kendaraanSimpan')->name('pegawai.kendaraan.simpan');
+Route::DELETE('/pegawai/kendaraan-hapus/{id}', 'App\Http\Controllers\PegawaiController@kendaraanHapus')->name('pegawai.kendaraan.hapus');
+Route::get('/pegawai/kendaraan-servis/{id}', 'App\Http\Controllers\PegawaiController@kendaraanServis')->name('pegawai.kendaraan.servis');
+Route::post('/pegawai/kendaraan-status/{id}', 'App\Http\Controllers\PegawaiController@kendaraanStatus')->name('pegawai.kendaraan.status');
 
 // Route::get('/pegawai/kendaraan-servis/{id}', 'App\Http\Controllers\PegawaiController@kendaraanServis')->name('pegawai.kendaraan.servis');
 // Route::get('/pegawai/kendaraan-servis-tambah/{id}', 'App\Http\Controllers\PegawaiController@servisTambah')->name('pegawai.kendaraan.servis.tambah');
@@ -85,3 +87,6 @@ Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 //pajak
 Route::resource('pajak', BarangController::class);
 Route::resource('pajak', 'App\Http\Controllers\PajakController');
+//bbm
+Route::resource('bbm', BBMController::class);
+Route::resource('bbm', 'App\Http\Controllers\BBMController');
