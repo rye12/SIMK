@@ -129,7 +129,7 @@
 					</ul>
 					<ul class="nav nav-group-sub">
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="{{ route('bbm.index')}}" class="nav-link">
 								<i class="icon-gas"></i> <span>Pengajuan BBM</span></a></a>
 						</li>
 					</ul>

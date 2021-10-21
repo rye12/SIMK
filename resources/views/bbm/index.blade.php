@@ -6,7 +6,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h3 class="card-title">Data Servis Kendaraan</h3>
+                <h3 class="card-title">Data Pengajuan BBM</h3>
                 <a href="{{ route('servis.create') }}" class="btn btn-sm btn-success modal-show">
                     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Data</a>
 
@@ -18,8 +18,8 @@
                             <th>No.</th>
                             <th>Plat Nomor</th>
                             <th>ID Pegawai</th>
-                            <th>Kebutuhan Sekarang</th>
-                            <th>Kebutuhan Selanjutnya</th>
+                            <th>Jenis BBM</th>
+                            <th>Nominal</th>
                             <th>Foto</th>
                             <th>Pemilik</th>
                             <th>Aksi</th>
