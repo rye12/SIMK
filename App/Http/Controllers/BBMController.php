@@ -11,13 +11,13 @@ class BBMController extends Controller
     public function index()
     {
 
-        $data = DB::table('servis as s')
+        $data = DB::table('bbm as b')
         ->leftjoin('users as t', 's.id_pegawai', 't.id')
         ->select("s.*","t.name as nama")
         ->get();
         
 
-        return view('servis.index', compact('data'));
+        return view('bbm.index', compact('data'));
     }
 
     public function store(Request $request)
@@ -25,28 +25,24 @@ class BBMController extends Controller
         $nama = [
             'nama'=> $request->nama
         ];
-        $servis = [
-            'id_kendaraan' => $request->id_kendaraan,
-            'id_pegawai' => $request->id_pegawai,
-            'kebutuhan_sekarang' => $request->kebutuhan_sekarang,
-            'kebutuhan_selanjutnya' => $request->kebutuhan_selanjutnya,
-            'tanggal' => $request->tanggal,
-            'keterangan' => $request->keterangan
+        $bbm = [
+            'jumlah_liter' => $request->jumlah_liter,
+            'nominal' => $request->nominal
         ];
-        DB::table('servis')->insert($servis);
+        DB::table('bbm')->insert($bbm);
         return redirect()->back()->with('success', 'Post updated successfully');
     }
 
     public function create()
     {
-        return view('servis.create');
+        return view('bbm.create');
     }
 
     public function edit($id)
     {
-        $servis = DB::table("servis")->where('id',$id)->first();
+        $servis = DB::table("bbm")->where('id',$id)->first();
         $nama = DB::table("users")->get();
-        return view('servis.edit', compact('servis','nama'));
+        return view('bbm.edit', compact('bbm','nama'));
     }
 
     /**
@@ -59,41 +55,37 @@ class BBMController extends Controller
 
     public function update(Request $request, $id)
     {
-        $servis = DB::table('servis')->where('id',$id)->update([
-            'id_kendaraan' => $request->id_kendaraan,
-            'id_pegawai' => $request->id_pegawai,
-            'kebutuhan_sekarang' => $request->kebutuhan_sekarang,
-            'kebutuhan_selanjutnya' => $request->kebutuhan_selanjutnya,
-            'tanggal' => $request->tanggal,
-            'keterangan' => $request->keterangan,
+        $bbm = DB::table('bbm')->where('id',$id)->update([
+            'jumlah_liter' => $request->jumlah_liter,
+            'nominal' => $request->nominal
         ]);
-        return redirect()->route('servis.index')->with('success', 'Post update successfully');
+        return redirect()->route('bbm.index')->with('success', 'Post update successfully');
     }
 
-    public function destroy(Servis $servis, $id)
+    public function destroy(BBM $bbm, $id)
     {
-        $servis = DB::table('servis')->where('id', $id);
-        $servis->delete();
+        $bbm = DB::table('bbm')->where('id', $id);
+        $bbm->delete();
 
-        return redirect()->route('servis.index')
+        return redirect()->route('bbm.index')
             ->with('success','Post deleted successfully');
     }
 
 
     public function lihat($id)
     {
-        $foto = DB::table('servis_foto')->where('id_servis', $id)->get();
-        return view('servis.foto', compact('id','foto'));
+        $foto = DB::table('bbm_foto')->where('id_bbm', $id)->get();
+        return view('bbm.foto', compact('id','foto'));
     }
 
     public function fotoupload(Request $request, $id)
     {
         $file = $request->file('foto');
-        $tujuan_upload = 'files/servis/';
+        $tujuan_upload = 'files/bbm/';
 
         $nama = $file->getClientOriginalName();
         $file->move($tujuan_upload, $nama);
-        DB::table('servis_foto')->insert(['file' => $nama, 'id_servis' => $id, 'deskripsi' => $request->deskripsi]);
+        DB::table('bbm_foto')->insert(['file' => $nama, 'id_bbm' => $id, 'deskripsi' => $request->deskripsi]);
         return back();
     }
 }
