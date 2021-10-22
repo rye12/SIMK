@@ -3,7 +3,7 @@
     @method('PUT')
     <div class="form-group">
         <label for="exampleFormControlInput1">Model Kendaraan</label>
-        <input name="nama" type="text" class="form-control" id="nama" value="{{$kendaraan->nama}}" placeholder="Contoh: Avanza 1.5 Veloz" autocomplete="FALSE">
+        <input name="nama" type="text" class="form-control" id="nama" value="{{$kendaraan->nama}}" placeholder="Contoh: Avanza 1.5 Veloz" autocomplete="off">
     </div>
     <div class="form-group">
         <label>Jenis Kendaraan</label>

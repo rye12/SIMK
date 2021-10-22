@@ -94,3 +94,4 @@ Route::resource('bbm', 'App\Http\Controllers\BBMController');
 
 //pengajuan barang
 Route::resource('item', ItemController::class);
+Route::DELETE('/item/{id}', 'App\Http\Controllers\ItemController@destroy');

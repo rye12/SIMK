@@ -1,44 +1,32 @@
-<form action="{{ route('kendaraan.update',$kendaraan->id) }}" method="POST">
+<form action="{{ route('item.update',$item->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="exampleFormControlInput1">Model Kendaraan</label>
-        <input name="nama" type="text" class="form-control" id="nama" value="{{$kendaraan->nama}}" placeholder="Contoh: Avanza 1.5 Veloz" autocomplete="FALSE">
+        <label for="exampleFormControlInput1">NIP Pegawai</label>
+        <input name="nip" type="text" class="form-control" autofocus='true' autocomplete="off" value="{{$item->id_pegawai}}">
     </div>
     <div class="form-group">
-        <label>Jenis Kendaraan</label>
-        <div style="margin-left: 20px">
-            @foreach($jenis as $j)
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="id_jenis" id="flexRadioDefault1" {{($j->id==$kendaraan->id_jenis?"checked":"")}} value="{{$j->id}}">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    {{$j->nama}}
-                </label>
-            </div>
+        <label for="exampleFormControlInput1">Barang</label>
+        <select class="custom-select" name="id_barang">
+            <option></option>
+            @foreach ($jenis as $j)
+            <option {{($j->id==$item->id_barang?"selected":"")}} value="{{$j->kode}}">{{$j->nama}}</option>
             @endforeach
-        </div>
+        </select>
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">No. Rangka</label>
-            <input name="no_rangka" type="text" class="form-control" id="no_rangka" value="{{$kendaraan->no_rangka}}" autocomplete="off">
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">No. Plat</label>
-            <input name="no_plat" type="text" class="form-control" id="no_plat" value="{{$kendaraan->no_plat}}" autocomplete="off">
-        </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Keterangan</label>
+        <input name="keterangan" type="text" class="form-control" autocomplete="off" value="{{$item->keterangan}}">
     </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">No. Mesin</label>
-            <input name="no_mesin" type="text" class="form-control" id="no_mesin" value="{{$kendaraan->no_mesin}}" placeholder="Contoh: 2NRJHDH39874982VE" autocomplete="off">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">Warna</label>
-            <input name="warna" type="text" class="form-control" id="warna" value="{{$kendaraan->warna}}" autocomplete="off">
-        </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Barang</label>
+        <select class="custom-select" name="verifikasi">
+            <option></option>
+            @foreach ($verifikasi as $v)
+            <option {{($v->id==$item->verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
+            @endforeach
+        </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">
+        <i class="icon-pencil" style="margin-right: 5px;"></i>Edit</button>
 </form>
