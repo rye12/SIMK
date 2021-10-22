@@ -88,6 +88,8 @@ Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 //pajak
 Route::resource('pajak', BarangController::class);
 Route::resource('pajak', 'App\Http\Controllers\PajakController');
+Route::DELETE('/pajak/{id}', 'App\Http\Controllers\PajakController@destroy');
+
 //bbm
 Route::resource('bbm', BBMController::class);
 Route::resource('bbm', 'App\Http\Controllers\BBMController');

@@ -85,8 +85,8 @@ class PajakController extends Controller
     public function edit($id)
     {
         $pajak = DB::table("pajak")->where('id', $id)->first();
-        $pegawai = DB::table("pegawai")->get();
-        $kendaraan = DB::table("kendaraan")->get();
+        $pegawai = DB::table("pegawai")->where('id', $id)->first();
+        $kendaraan = DB::table("kendaraan")->where('id', $id)->get();
         $pajak_jenis = DB::table("pajak_jenis")->get();
         $verifikasi = DB::table("verifikasi")->get();
         return view('pajak.edit', compact('pajak', 'pegawai','kendaraan','pajak_jenis','verifikasi'));
@@ -101,20 +101,16 @@ class PajakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pegawai = DB::table('pegawai')->where('nip', $request->nip)->first();
-        $id = $pegawai->id;
-        $kendaraan = DB::table('kendaraan')->where('no_rangka', $request->no_rangka)->first();
-        $noka = $kendaraan->id;
 
         $pajak = [
-            'id_pegawai' => $id,
-            'id_kendaraan' => $noka,
+            'id_pegawai' => $request->id_pegawai,
+            'id_kendaraan' => $request->id_kendaraan,
             'id_jenis' => $request->id_jenis,
             'nominal' => $request->nominal,
-            'id_verifikasi' => '1'
+            'id_verifikasi' => $request->id_verifikasi
         ];
 
-        DB::table('pajak')->insert($pajak);
+        DB::table('pajak')->where('id', $id)->update($pajak);
         return redirect()->route('pajak.index')->with('success', 'Post updated successfully');
     }
 
@@ -126,6 +122,9 @@ class PajakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pajak = DB::table("pajak")->where('id', $id)->delete();
+
+        return redirect()->route('pajak.index')
+            ->with('success', 'Post deleted successfully');
     }
 }
