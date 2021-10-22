@@ -18,6 +18,7 @@
                             <th>No.</th>
                             <th>Plat Nomor</th>
                             <th>Jenis BBM</th>
+                            <th>Jumlah Liter</th>
                             <th>Nominal</th>
                             <th>Foto</th>
                             <th>Pemilik</th>
@@ -38,6 +39,9 @@
                         </td>
                         <td>
                             {{ $r->jenis }}
+                        </td>
+                        <td>
+                            {{ $r->jumlah_liter }}
                         </td>
                         <td>
                             {{ $r->nominal }}

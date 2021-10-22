@@ -66,7 +66,7 @@ class BBMController extends Controller
         return redirect()->route('bbm.index')->with('success', 'Post update successfully');
     }
 
-    public function destroy(BBM $bbm, $id)
+    public function destroy($id)
     {
         $bbm = DB::table('bbm')->where('id', $id);
         $bbm->delete();
