@@ -13,7 +13,7 @@ class ItemController extends Controller
         $data = DB::table('pengajuan_barang as a')
             ->leftjoin('pegawai as b', 'b.id', 'a.id_pegawai')
             ->leftjoin('barang_kategori as c', 'c.id', 'a.id_barang')
-            ->leftjoin('verifikasi as d', 'd.id', 'a.verifikasi')
+            ->leftjoin('verifikasi_item as d', 'd.id', 'a.verifikasi')
             ->select('a.*', 'b.nama as nama', 'c.nama as barang', 'd.nama as verifikasi')
             ->get();
         return view('item.index', compact('data'));
@@ -49,7 +49,7 @@ class ItemController extends Controller
     {
         $item = DB::table("pengajuan_barang")->where('id', $id)->first();
         $jenis = DB::table("barang_kategori")->get();
-        $verifikasi = DB::table('verifikasi')->get();
+        $verifikasi = DB::table('verifikasi_item')->get();
         return view('item.edit', compact('item', 'jenis', 'verifikasi'));
     }
 
