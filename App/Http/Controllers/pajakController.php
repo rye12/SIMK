@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pajak;
+use App\Models\Pajak;
 use Illuminate\Http\Request;
+use DB;
 
-class pajakController extends Controller
+class PajakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,17 @@ class pajakController extends Controller
      */
     public function index()
     {
-        return view('pajak.index');
+
+        $data = DB::table('pajak as a')
+            ->leftjoin('pegawai as b', 'a.id_pegawai', 'b.id')
+            ->leftjoin('kendaraan as c', 'a.id_kendaraan', 'c.id')
+            ->leftjoin('pajak_jenis as d', 'a.id_jenis', 'd.id')
+            ->leftjoin('verifikasi as e', 'a.id_verifikasi', 'e.id')
+            ->select("a.*", "b.nama as pegawai", "c.nama as kendaraan", "d.nama as jenis_pajak", "e.nama as status")
+            ->get();
+        //$data = Kendaraan::with('user')->get();
+
+        return view('pajak.index', compact('data'));
     }
 
     /**
@@ -35,7 +46,21 @@ class pajakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $pegawai = DB::table('pegawai')->where('nip', $request->nip)->first();
+        $id = $pegawai->id;
+        $kendaraan = DB::table('kendaraan')->where('no_rangka', $request->no_rangka)->first();
+        $noka = $kendaraan->id;
+        $pajak = [
+            'id_pegawai' => $id,
+            'id_kendaraan' => $noka,
+            'id_jenis' => $request->id_jenis,
+            'nominal' => $request->nominal,
+            'id_verifikasi' => '1'
+        ];
+
+        DB::table('pajak')->insert($pajak);
+        return redirect()->route('pajak.index')->with('success', 'Post updated successfully');
     }
 
     /**

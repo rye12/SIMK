@@ -8,7 +8,7 @@
 
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h6 class="card-title">Data Kendaraan</h6>
+                <h3 class="card-title">Data Kendaraan</h3>
                 <a href="{{ route('kendaraan.create') }}" class="btn btn-sm btn-success modal-show">
                     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Kendaraan</a>
 

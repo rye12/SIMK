@@ -8,6 +8,8 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
+use App\Http\Controllers\PajakController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,9 +85,15 @@ Route::get('servis/lihat/{id}', 'App\Http\Controllers\ServisController@lihat')->
 Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fotoupload')->name('servis.foto.upload');
 Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 
+//pajak
+Route::resource('pajak', BarangController::class);
+Route::resource('pajak', 'App\Http\Controllers\PajakController');
 //bbm
 Route::resource('bbm', BBMController::class);
 Route::resource('bbm', 'App\Http\Controllers\BBMController');
 Route::get('bbm/lihat/{id}', 'App\Http\Controllers\BBMController@lihat')->name('bbm.foto');
 Route::post('bbm/fotoupload/{id}', 'App\Http\Controllers\BBMController@fotoupload')->name('bbm.foto.upload');
 Route::DELETE('/bbm/{id}', 'App\Http\Controllers\BBMController@destroy');
+
+//pengajuan barang
+Route::resource('item', ItemController::class);
