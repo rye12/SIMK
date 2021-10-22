@@ -2,16 +2,36 @@
   @csrf
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">NIP</label>
-    <input name="nip" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan NIP" >
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">No Rangka</label>
-    <input name="no_rangka" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
+    <label for="exampleFormControlInput1">Kendaraan</label>
+
+    <select class="form-control" name="id_kendaraan">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('kendaraan')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Jenis Pajak</label>
-    <input name="id_jenis" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
+    <select class="form-control" name="id_jenis">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('pajak_jenis')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}"> {{$p->nama}}</option>
+      <?php
+      }
+      ?>
+    </select>
+
   </div>
 
   <div class="form-group">
