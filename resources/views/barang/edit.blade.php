@@ -11,10 +11,6 @@
             </select>
         </div>
 
-        <!-- <div class="form-group">
-             <label for="formGroupExampleInput">Kode</label>
-            <input name="kode" type="text" class="form-control" id="formGroupExampleInput" value="{{ $barang->kode }}" >
-        </div> -->
         <div class="form-group">
             <label for="exampleFormControlInput">Kode</label>
             <input name="kode" type="text" class="form-control" id="formGroupExampleInput"  value="{{ $barang->kode }}"autocomplete="off">
