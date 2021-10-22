@@ -86,3 +86,6 @@ Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 //bbm
 Route::resource('bbm', BBMController::class);
 Route::resource('bbm', 'App\Http\Controllers\BBMController');
+Route::get('bbm/lihat/{id}', 'App\Http\Controllers\BBMController@lihat')->name('bbm.foto');
+Route::post('bbm/fotoupload/{id}', 'App\Http\Controllers\BBMController@fotoupload')->name('bbm.foto.upload');
+Route::DELETE('/bbm/{id}', 'App\Http\Controllers\BBMController@destroy');

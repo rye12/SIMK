@@ -12,8 +12,8 @@ class BBMController extends Controller
     {
 
         $data = DB::table('bbm as b')
-        ->leftjoin('users as t', 's.id_pegawai', 't.id')
-        ->select("s.*","t.name as nama")
+        ->leftjoin('bbm_jenis as j', 'b.id_jenis', 'j.id')
+        ->select("b.*","j.nama as jenis")
         ->get();
         
 
@@ -26,6 +26,8 @@ class BBMController extends Controller
             'nama'=> $request->nama
         ];
         $bbm = [
+            'id_kendaraan' => $request->id_kendaraan,
+            'id_jenis' => $request->id_jenis,
             'jumlah_liter' => $request->jumlah_liter,
             'nominal' => $request->nominal
         ];
@@ -40,9 +42,9 @@ class BBMController extends Controller
 
     public function edit($id)
     {
-        $servis = DB::table("bbm")->where('id',$id)->first();
-        $nama = DB::table("users")->get();
-        return view('bbm.edit', compact('bbm','nama'));
+        $bbm= DB::table("bbm")->where('id',$id)->first();
+        $jenis = DB::table("bbm_jenis")->get();
+        return view('bbm.edit', compact('bbm','jenis'));
     }
 
     /**
@@ -56,6 +58,8 @@ class BBMController extends Controller
     public function update(Request $request, $id)
     {
         $bbm = DB::table('bbm')->where('id',$id)->update([
+            'id_kendaraan' => $request->id_kendaraan,
+            'id_jenis' => $request->id_jenis,
             'jumlah_liter' => $request->jumlah_liter,
             'nominal' => $request->nominal
         ]);
