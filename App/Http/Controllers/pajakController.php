@@ -17,7 +17,7 @@ class PajakController extends Controller
     {
         $data = DB::table('pajak as a')
         ->leftjoin('pegawai as b', 'a.id_pegawai', 'b.id')
-        ->leftjoin('kendaraan as c', 'a.id_kendaraan', 'c.id')
+        ->leftjoin('kendaraan as c', 'a.id_kendaraan', 'c.no_rangka')
         ->leftjoin('pajak_jenis as d', 'a.id_jenis', 'd.id')
         ->leftjoin('verifikasi as e', 'a.id_verifikasi', 'e.id')
         ->select("a.*", "b.nama as pegawai", "c.nama as kendaraan", "d.nama as jenis_pajak", "e.nama as status")
