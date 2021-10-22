@@ -116,7 +116,7 @@
 
 					<ul class="nav nav-group-sub">
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="{{ route('item.index') }}" class="nav-link">
 								<i class="icon-cube"></i> <span>Pengajuan Barang</span></a>
 						</li>
 					</ul>

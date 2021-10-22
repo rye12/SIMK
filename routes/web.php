@@ -9,6 +9,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
 use App\Http\Controllers\PajakController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +91,6 @@ Route::resource('pajak', 'App\Http\Controllers\PajakController');
 //bbm
 Route::resource('bbm', BBMController::class);
 Route::resource('bbm', 'App\Http\Controllers\BBMController');
+
+//pengajuan barang
+Route::resource('item', ItemController::class);
