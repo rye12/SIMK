@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h3 class="card-title">Data Pengajuan BBM</h3>
-                <a href="{{ route('servis.create') }}" class="btn btn-sm btn-success modal-show">
+                <a href="{{ route('bbm.create') }}" class="btn btn-sm btn-success modal-show">
                     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Data</a>
 
             </div>
@@ -17,7 +17,6 @@
                         <tr>
                             <th>No.</th>
                             <th>Plat Nomor</th>
-                            <th>ID Pegawai</th>
                             <th>Jenis BBM</th>
                             <th>Nominal</th>
                             <th>Foto</th>
@@ -38,13 +37,10 @@
                             {{ $r->id_kendaraan }}
                         </td>
                         <td>
-                            {{ $r->id_pegawai }}
+                            {{ $r->jenis }}
                         </td>
                         <td>
-                            {{ $r->kebutuhan_sekarang }}
-                        </td>
-                        <td>
-                            {{ $r->kebutuhan_selanjutnya }}
+                            {{ $r->nominal }}
                         </td>
                         <td><a href="{{route('servis.foto',$r->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>
@@ -56,10 +52,10 @@
 
                         </td>
                         <td class="d-flex flex-row">
-                            <a href="{{ route('servis.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
+                            <a href="{{ route('bbm.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
                             </a>
-                            <form action="{{ route('servis.destroy', $r->id) }}" method="POST">
+                            <form action="{{ route('bbm.destroy', $r->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">

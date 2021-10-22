@@ -9,7 +9,7 @@ class Servis extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'jenis','jumlah_liter','nominal'
+        'id_pegawai','id_jenis','jumlah_liter','nominal'
     ];
     public function servis(){
         return $this->belongsTo(User::class);
