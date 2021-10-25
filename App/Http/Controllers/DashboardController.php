@@ -7,8 +7,7 @@ use DB;
 
 class Dashboard extends Controller
 {
-    public function index() 
+    public function index()
     {
-        $jmlPegawai = collect(DB::SELECT("SELECT count(id) as jmlPegawai"))->first();
     }
 }
