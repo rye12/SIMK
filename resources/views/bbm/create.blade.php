@@ -16,6 +16,23 @@
       ?>
     </select>
   </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">NIP - Pegawai</label>
+
+    <select class="form-control" name="id_pegawai">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('pegawai')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}">{{ $p->nip }}</option>
+      <?php
+      }
+      ?>
+    </select>
+  </div>
     
   <div class="form-group">
     <label>Jenis BBM</label>
