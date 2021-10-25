@@ -24,6 +24,7 @@
                             <th>Jenis Pajak</th>
                             <th>Nominal</th>
                             <th>Status</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -50,6 +51,9 @@
                         </td>
                         <td>
                             {{ $r->status }}
+                        </td>
+                        <td>
+                        <a href="{{ route('pajak.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a>
                         </td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('pajak.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">

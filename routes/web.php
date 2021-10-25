@@ -33,10 +33,11 @@ Route::get('/', function () {
 //Route::post('/login', 'App\Http\Controllers\Auth\AdminAuthController@postLogin')->name('proseslogin');
 
 
-
+//Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('dashboard');
 })->name('dashboard');
+Route::get('/jmlPegawai/{id}', 'App\Http\Controllers\DashboardController@index');
 
 // Route::get('/user1',[UserController::Class,'index'])->name('user1');
 
@@ -89,6 +90,8 @@ Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 Route::resource('pajak', BarangController::class);
 Route::resource('pajak', 'App\Http\Controllers\PajakController');
 Route::DELETE('/pajak/{id}', 'App\Http\Controllers\PajakController@destroy');
+Route::get('pajak/lihat/{id}', 'App\Http\Controllers\PajakController@lihat')->name('pajak.foto');
+Route::post('pajak/fotoupload/{id}', 'App\Http\Controllers\PajakController@fotoupload')->name('pajak.foto.upload');
 
 //bbm
 Route::resource('bbm', BBMController::class);
