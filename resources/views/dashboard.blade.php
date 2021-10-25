@@ -30,7 +30,11 @@
 			<div class="card-body">
 				<div class="d-flex">
 					<h3 class="font-weight-semibold mb-0">
-						<i class="fa fa-users"></i> 2
+						<i class="fa fa-users"></i>
+						<?php
+						$jmlPegawai = DB::table('pegawai')->count();
+						?>
+						{{$jmlPegawai}}
 					</h3>
 				</div>
 
@@ -52,7 +56,11 @@
 			<div class="card-body">
 				<div class="d-flex">
 					<h3 class="font-weight-semibold mb-0">
-						<i class="fa fa-table"></i> 3
+						<i class="fa fa-table"></i>
+						<?php
+						$jmlKendaraan = DB::table('kendaraan')->count();
+						?>
+						{{$jmlKendaraan}}
 					</h3>
 				</div>
 
@@ -72,7 +80,11 @@
 			<div class="card-body">
 				<div class="d-flex">
 					<h3 class="font-weight-semibold mb-0">
-						<i class="fa fa-cart-plus"></i> 2
+						<i class="fa fa-cart-plus"></i>
+						<?php
+						$jmlServis = DB::table('servis')->count();
+						?>
+						{{$jmlServis}}
 					</h3>
 				</div>
 
