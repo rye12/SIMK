@@ -47,11 +47,11 @@
                             {{ $r->nominal }}
                         </td>
                         <td><a href="{{route('servis.foto',$r->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
-                        @foreach($pegawai as p)
+                    @foreach($pegawai as p)
                         <td>
                             {{$p->nama}}
                         </td>
-                        @endforeach
+                    @endforeach
                         <td class="d-flex flex-row">
                             <a href="{{ route('bbm.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
