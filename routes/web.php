@@ -9,7 +9,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
-use App\Http\Controllers\pajakController;
+use App\Http\Controllers\PajakController;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -93,7 +93,7 @@ Route::post('servis/fotoupload/{id}', 'App\Http\Controllers\ServisController@fot
 Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 
 //pajak
-Route::resource('pajak', pajakController::class);
+Route::resource('pajak', PajakController::class);
 Route::resource('pajak', 'App\Http\Controllers\PajakController');
 Route::DELETE('/pajak/{id}', 'App\Http\Controllers\PajakController@destroy');
 Route::get('pajak/lihat/{id}', 'App\Http\Controllers\PajakController@lihat')->name('pajak.foto');
