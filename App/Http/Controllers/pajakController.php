@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pajak;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class PajakController extends Controller
 {
@@ -15,6 +16,10 @@ class PajakController extends Controller
      */
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('pajak as a')
             ->leftjoin('pegawai as b', 'a.id_pegawai', 'b.id')
             ->leftjoin('kendaraan as c', 'a.id_kendaraan', 'c.id')
@@ -34,6 +39,10 @@ class PajakController extends Controller
      */
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         return view('pajak.create');
     }
 
@@ -45,7 +54,10 @@ class PajakController extends Controller
      */
     public function store(Request $request)
     {
-
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
 
         $kendaraan = DB::table('kendaraan_pegawai')->where('id_kendaraan', $request->id_kendaraan)->first();
         $pajak = [
@@ -79,6 +91,10 @@ class PajakController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pajak = DB::table("pajak")->where('id', $id)->first();
         $pegawai = DB::table("pegawai")->where('id', $id)->first();
         $kendaraan = DB::table("kendaraan")->where('id', $id)->get();
@@ -96,7 +112,10 @@ class PajakController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pajak = [
             'id_kendaraan' => $request->id_kendaraan,
             'id_jenis' => $request->id_jenis,
@@ -116,6 +135,10 @@ class PajakController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pajak = DB::table("pajak")->where('id', $id)->delete();
 
         return redirect()->route('pajak.index')
@@ -124,12 +147,20 @@ class PajakController extends Controller
 
     public function lihat($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $foto = DB::table('pajak_foto')->where('id_pajak', $id)->get();
         return view('pajak.foto', compact('id','foto'));
     }
 
     public function fotoupload(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $file = $request->file('foto');
         $tujuan_upload = 'files/pajak/';
 
