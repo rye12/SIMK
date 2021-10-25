@@ -14,7 +14,7 @@ class BBMController extends Controller
         ->leftjoin('kendaraan as k', 'b.id_kendaraan', 'k.id')
         ->leftjoin('pegawai as p', 'b.id_pegawai', 'p.id')
         ->leftjoin('bbm_jenis as j', 'b.id_jenis', 'j.id')
-        ->select("b.*","k.nama as kendaraan","j.nama as jenis","p.nama as pemilik")
+        ->select("b.*","k.nama as kendaraan","j.nama as jenis","p.nama as pemilik","p.nip as nip_pegawai")
         ->get();
         
 

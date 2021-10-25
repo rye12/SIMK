@@ -2,9 +2,39 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="exampleFormControlInput1">Plat Nomor</label>
-        <input name="id_kendaraan" type="text" class="form-control" id="id_kendaraan" value="{{$bbm->id_kendaraan}}" placeholder="Masukkan plat nomor yang baru" autocomplete="FALSE">
+        <label for="exampleFormControlInput1">Kendaraan</label>
+
+        <select class="form-control" name="id_kendaraan">
+            <option value=""></option>
+            <?php
+            $pegawai = DB::table('kendaraan')->get();
+            foreach ($pegawai as $p) {
+
+            ?>
+                <option value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">NIP - Pegawai</label>
+
+        <select class="form-control" name="id_pegawai">
+            <option value=""></option>
+            <?php
+            $pegawai = DB::table('pegawai')->get();
+            foreach ($pegawai as $p) {
+
+            ?>
+                <option value="{{$p->id}}">{{ $p->nip }}</option>
+            <?php
+            }
+            ?>
+        </select>
+    </div>
+
     <div class="form-group">
         <label>Jenis BBM</label>
         <div style="margin-left: 20px">
@@ -19,7 +49,7 @@
         </div>
     </div>
     <div class="form-row">
-    <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
             <label for="exampleFormControlInput1">Jumlah Liter</label>
             <input name="jumlah_liter" type="text" class="form-control" id="jumlah_liter" value="{{$bbm->jumlah_liter}}" autocomplete="off">
         </div>
