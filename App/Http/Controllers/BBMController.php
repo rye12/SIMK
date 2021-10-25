@@ -10,7 +10,7 @@ class BBMController extends Controller
 {
     public function index()
     {
-
+        $pegawai = DB::table('pegawai')->get();
         $data = DB::table('bbm as b')
         ->leftjoin('kendaraan as k', 'b.id_kendaraan', 'k.id')
         ->leftjoin('bbm_jenis as j', 'b.id_jenis', 'j.id')
@@ -18,7 +18,7 @@ class BBMController extends Controller
         ->get();
         
 
-        return view('bbm.index', compact('data'));
+        return view('bbm.index', compact('data','pegawai'));
     }
 
     public function store(Request $request)
