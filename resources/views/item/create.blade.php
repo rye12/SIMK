@@ -1,8 +1,17 @@
 <form action="{{ route('item.store') }}" method="POST">
   @csrf
   <div class="form-group">
-    <label for="exampleFormControlInput1">NIP Pegawai</label>
-    <input name="nip" type="text" class="form-control" autofocus='true' autocomplete="off">
+    <label for="exampleFormControlInput1">Nama Pegawai</label>
+    <select class="form-control" name="id_pegawai">
+      <option value="">---- Pilih NIP - Nama ----</option>
+      <?php
+      foreach ($pegawai as $p) {
+      ?>
+        <option value="{{$p->id}}">{{$p->nip}} - {{$p->nama}}</option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Barang</label>
@@ -14,7 +23,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Keterangan</label>
+    <label for="exampleFormControlInput1">Keterangan Barang</label>
     <input name="keterangan" type="text" class="form-control" autocomplete="off">
   </div>
   <button type="submit" class="btn btn-primary">

@@ -24,6 +24,7 @@
                             <th>Alamat</th>
                             <th>No.Hp</th>
                             <th>Aksi</th>
+                            <th>Kendaraan</th>
                         </tr>
                     </thead>
                     <?php
@@ -58,6 +59,8 @@
                                     <i class="icon-bin"></i>
                                 </button>
                             </form>
+                        </td>
+                        <td>
                             <a href="{{ route('pegawai.kendaraan',$r->id) }}" class="btn btn-primary btn-sm">
                                 <i class="icon-car"></i>
                             </a>

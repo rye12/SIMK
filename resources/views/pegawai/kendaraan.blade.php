@@ -18,7 +18,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Nama</th>
-                            <th>Jenis</th>
+                            <th>Plat Nomor</th>
                             <th>warna</th>
                             <th>Mesin</th>
                             <th>Status</th>
@@ -38,7 +38,7 @@
                             {{ $r->nama }}
                         </td>
                         <td>
-                            {{ $r->jenis }}
+                            {{ $r->no_plat }}
                         </td>
                         <td>
                             {{ $r->warna }}
@@ -54,12 +54,16 @@
                         </td>
 
                         <td class="d-flex flex-row">
-                            <a href="{{ route('kendaraan.edit',$r->id_kendaraan_pegawai) }}" class="btn btn-primary btn-sm modal-show">Edit</a>
+                            <a href="{{ route('kendaraan.edit',$r->id_kendaraan_pegawai) }}" class="btn btn-primary btn-sm modal-show">
+                                <i class="icon-pencil"></i>
+                            </a>
                             <form action="{{ route('pegawai.kendaraan.hapus', $r->id_kendaraan_pegawai) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">delete</button>
-                                <a href="{{ route('pegawai.kendaraan.servis',$r->id_kendaraan_pegawai) }}" class="btn btn-primary btn-sm">servis</a>
+                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">
+                                    <i class="icon-bin"></i>
+                                </button>
+                                <!-- <a href="{{ route('pegawai.kendaraan.servis',$r->id_kendaraan_pegawai) }}" class="btn btn-primary btn-sm">servis</a> -->
 
                             </form>
                         </td>

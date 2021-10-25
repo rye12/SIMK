@@ -10,7 +10,7 @@
         <select class="custom-select" name="id_barang">
             <option></option>
             @foreach ($jenis as $j)
-            <option {{($j->id==$item->id_barang?"selected":"")}} value="{{$j->kode}}">{{$j->nama}}</option>
+            <option {{($j->id==$item->id_barang?"selected":"")}} value="{{$j->id}}">{{$j->nama}}</option>
             @endforeach
         </select>
     </div>
