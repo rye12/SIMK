@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\PasswordController;
+//use App\Http\Controllers\AdminController;
+//use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
@@ -40,9 +41,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 // Route::get('/user1',[UserController::Class,'index'])->name('user1');
 
-Route::get('/admin1', 'App\Http\Controllers\AdminController@index')->name('admin');
+// Route::get('/admin1', 'App\Http\Controllers\AdminController@index')->name('admin');
 
-Route::resource('admins', AdminController::class);
+// Route::resource('admins', AdminController::class);
+
+Route::resource('user', UserController::class);
 
 
 // Route::resource()
