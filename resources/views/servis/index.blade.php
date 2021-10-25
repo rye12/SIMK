@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Plat Nomor</th>
+                            <th>Jenis Kendaraan</th>
                             <th>NIP</th>
                             <th>Kebutuhan Sekarang</th>
                             <th>Kebutuhan Selanjutnya</th>
