@@ -56,86 +56,41 @@ class UserController extends Controller
             ->with('success', 'Post created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(User $user)
     {
 
         return view('user.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = DB::table('users')->where('id', $id)->first();
         return view('user.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user = [
-            'name' => $request->nama,
-            'username' => $request->id_jenis,
-            'email' => $request->no_rangka,
-            'password' => $request->no_plat,
+        $user = DB::table('users')->where('id', $id)->first();
+        $pass = $user->password;
+        $data = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => $pass,
         ];
-        DB::table('kendaraan')->insert($user);
+        if ($request->password != null) {
+            $data['password'] = bcrypt($request->password);
+        }
 
-
-        // $data = $request->validate([
-        //     'name' => 'required',
-        //     'username' => 'required',
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
-
-        // /// mengubah data berdasarkan request dan parameter yang dikirimkan
-        // // $user->update($request->all());
-        // if ($request->password == null || $request->password == '') {
-        //     $payload = User::where('id', $user->id)->first();
-        //     $user = User::where('id', $user->id)->update([
-        //         $data,
-        //         $data['password'] => $payload->password
-        //     ]);
-        // }
-
-
-        // /// setelah berhasil mengubah data
-        // if ($request->password != null) {
-        //     $user = User::where('id', $user->id)->update([
-        //         $data,
-        //         $data['password'] => bcrypt($request->password),
-        //     ]);
-        // }
-        // return redirect()->route('users.index')->with('success', 'Post updated successfully');
+        DB::table('users')->where('id', $id)->update($data);
+        return redirect()->route('user.index')->with('success', 'Post updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'Post deleted successfully');
     }
 }
