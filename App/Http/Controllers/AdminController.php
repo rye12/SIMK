@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data = DB::table('admins')->get();
+        $data = DB::table('admin')->get();
         return view('admin1', compact('data'));
     }
 
@@ -41,20 +41,19 @@ class AdminController extends Controller
             'username' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'password'=> 'required',
+            'password' => 'required',
         ]);
 
 
         $data['password'] = bcrypt($request->password);
-         
+
         /// insert setiap request dari form ke dalam database via model
         /// jika menggunakan metode ini, maka nama field dan nama form harus sama
         Admin::create($data);
-         
+
         /// redirect jika sukses menyimpan data
-        return redirect()->route('admins.index')
-                        ->with('success','Post created successfully.');
-    
+        return redirect()->route('admin.index')
+            ->with('success', 'Post created successfully.');
     }
 
     /**
@@ -65,8 +64,8 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        
-        return view('admin.show',compact('admin'));
+
+        return view('admin.show', compact('admin'));
     }
 
     /**
@@ -77,7 +76,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('admin.edit',compact('admin'));
+        return view('admin.edit', compact('admin'));
     }
 
     /**
@@ -89,35 +88,34 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        
-        
+
+
         $data = $request->validate([
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
             // 'password' => 'required',
         ]);
-         
+
         /// mengubah data berdasarkan request dan parameter yang dikirimkan
         // $admin->update($request->all());
-        if($request->password == null || $request->password == ''){
-            $payload = Admin::where('id',$admin->id)->first();
+        if ($request->password == null || $request->password == '') {
+            $payload = Admin::where('id', $admin->id)->first();
             $admin = Admin::where('id', $admin->id)->update([
                 $data,
-                $data['password']=>$payload->password
+                $data['password'] => $payload->password
             ]);
         }
-        
-         
+
+
         /// setelah berhasil mengubah data
-        if($request->password !=null){
+        if ($request->password != null) {
             $admin = Admin::where('id', $admin->id)->update([
                 $data,
-                $data['password']=>bcrypt($request->password),
+                $data['password'] => bcrypt($request->password),
             ]);
         }
-        return redirect()->route('admins.index')->with('success','Post updated successfully');
-    
+        return redirect()->route('admins.index')->with('success', 'Post updated successfully');
     }
 
     /**
@@ -129,9 +127,8 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         $admin->delete();
-  
+
         return redirect()->route('admins.index')
-                        ->with('success','Post deleted successfully');
-    
+            ->with('success', 'Post deleted successfully');
     }
 }

@@ -28,11 +28,8 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
-        $pegawai = DB::table('pegawai')->where('nip', $request->nip)->first();
-        $id_pegawai = $pegawai->id;
-
         $item = [
-            'id_pegawai' => $id_pegawai,
+            'id_pegawai' => $request->id_pegawai,
             'id_barang' => $request->id_barang,
             'keterangan' => $request->keterangan,
             'verifikasi' => 1,
