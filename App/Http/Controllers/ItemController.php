@@ -21,8 +21,9 @@ class ItemController extends Controller
 
     public function create()
     {
+        $pegawai = DB::table('pegawai')->get();
         $barang = DB::table('barang_kategori')->get();
-        return view('item.create', compact('barang'));
+        return view('item.create', compact('pegawai', 'barang'));
     }
 
     public function store(Request $request)
