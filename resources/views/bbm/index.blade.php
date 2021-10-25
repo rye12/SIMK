@@ -39,7 +39,7 @@
                             {{ $r->kendaraan }}
                         </td>
                         <td>
-                            {{ $r->id_pegawai }}
+                            {{ $r->nip_pegawai }}
                         </td>
                         <td>
                             {{ $r->jenis }}
