@@ -46,12 +46,15 @@
                             {{ $r->level }}
                         </td>
                         <td class="d-flex flex-row">
-                            <a href="{{ route('user.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">Edit</a>
+                            <a href="{{ route('user.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
+                                <i class="icon-pencil"></i>
+                            </a>
                             <form action="{{ route('user.destroy', $r->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">delete</button>
-
+                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">
+                                    <i class="icon-bin"></i>
+                                </button>
                             </form>
                         </td>
 

@@ -48,6 +48,8 @@ Route::resource('dashboard', 'App\Http\Controllers\DashboardController');
 // Route::resource('admins', AdminController::class);
 
 Route::resource('user', UserController::class);
+Route::DELETE('/user/{id}', 'App\Http\Controllers\UserController@destroy');
+
 
 
 // Route::resource()
