@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
 		<div class="navbar-brand">
-			
+
 		</div>
 
 		<div class="d-md-none">
@@ -45,9 +45,9 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-mobile">
-			<ul class="navbar-nav">			</ul>
+			<ul class="navbar-nav"> </ul>
 
-			
+
 
 		</div>
 	</div>
@@ -64,10 +64,10 @@
 			<div class="content d-flex justify-content-center align-items-center">
 
 				<!-- Login form -->
-                <form method="POST" class="login-form" action="{{ route('login') }}">
-            @csrf
-            
-				<!--  -->
+				<form method="POST" class="login-form" action="{{ route('login') }}">
+					@csrf
+
+					<!--  -->
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
@@ -117,10 +117,10 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2020 - 2021. <a href="#">Dinas Pendidikan Kabupaten Situbondo</a> by <a href="https://dispendik.situbondokab.go.id/" target="_blank">Nabil Ghusman</a>
+						&copy; 2020 - 2021. <a href="#">Dinas Pendidikan Kabupaten Situbondo</a>
 					</span>
 
-					
+
 				</div>
 			</div>
 			<!-- /footer -->
@@ -132,4 +132,5 @@
 	<!-- /page content -->
 
 </body>
+
 </html>

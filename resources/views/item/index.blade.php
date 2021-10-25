@@ -21,7 +21,7 @@
                             <th>Nama Pegawai</th>
                             <th>Barang</th>
                             <th>Keterangan</th>
-                            <th>Status</th>\
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
