@@ -12,8 +12,9 @@ class BBMController extends Controller
     {
 
         $data = DB::table('bbm as b')
+        ->leftjoin('kendaraan as k', 'b.id_kendaraan', 'k.id')
         ->leftjoin('bbm_jenis as j', 'b.id_jenis', 'j.id')
-        ->select("b.*","j.nama as jenis")
+        ->select("b.*","k.nama as kendaraan","j.nama as jenis")
         ->get();
         
 

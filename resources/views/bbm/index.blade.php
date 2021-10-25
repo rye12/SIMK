@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Plat Nomor</th>
+                            <th>Kendaraan</th>
                             <th>Jenis BBM</th>
                             <th>Jumlah Liter</th>
                             <th>Nominal</th>
@@ -35,7 +35,7 @@
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->id_kendaraan }}
+                            {{ $r->kendaraan }}
                         </td>
                         <td>
                             {{ $r->jenis }}
