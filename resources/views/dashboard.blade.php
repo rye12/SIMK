@@ -52,7 +52,7 @@
 			<div class="card-body">
 				<div class="d-flex">
 					<h3 class="font-weight-semibold mb-0">
-						<i class="fa fa-table"></i> 3
+						
 					</h3>
 				</div>
 

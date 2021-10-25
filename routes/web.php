@@ -38,7 +38,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('dashboard');
 })->name('dashboard');
-Route::get('/jmlPegawai/{id}', 'App\Http\Controllers\DashboardController@index');
+Route::resource('dashboard', DashboardController::class);
+Route::resource('dashboard', 'App\Http\Controllers\DashboardController');
 
 // Route::get('/user1',[UserController::Class,'index'])->name('user1');
 
