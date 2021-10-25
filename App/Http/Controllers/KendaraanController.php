@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class KendaraanController extends Controller
 {
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('kendaraan as c')
             ->leftjoin('kendaraan_pegawai as d', 'd.id_kendaraan', '=', 'c.id')
             ->leftjoin('pegawai as e', 'e.id', '=', 'd.id_pegawai')
@@ -21,12 +26,20 @@ class KendaraanController extends Controller
 
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
 
         return view('kendaraan.create');
     }
 
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = $request->validate([
             'nama' => 'required',
             'id_jenis' => 'required',
@@ -51,11 +64,19 @@ class KendaraanController extends Controller
 
     public function show(Kendaraan $kendaraan)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         return view('kendaraan.show', compact('kendaraan'));
     }
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $kendaraan = DB::table("kendaraan")->where('id', $id)->first();
         $jenis = DB::table("kendaraan_jenis")->get();
         return view('kendaraan.edit', compact('kendaraan', 'jenis'));
@@ -63,6 +84,10 @@ class KendaraanController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
 
         DB::table("kendaraan")->where('id', $id)->update([
             'nama' => $request->nama,
@@ -77,6 +102,10 @@ class KendaraanController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $del = DB::table('kendaraan')->where('id', $id);
         $del->delete();
 
@@ -85,11 +114,19 @@ class KendaraanController extends Controller
     }
     public function lihat($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $foto = DB::table('kendaraan_foto')->where('id_kendaraan', $id)->get();
         return view('kendaraan.foto', compact('id', 'foto'));
     }
     public function fotoupload(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $file = $request->file('foto');
         $tujuan_upload = 'files/kendaraan/';
 

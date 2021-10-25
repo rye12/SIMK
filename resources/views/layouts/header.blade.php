@@ -38,14 +38,11 @@
 
 				<div class="dropdown-menu dropdown-menu-right">
 					<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
-					<!-- <a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
-						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a> -->
 					<div class="dropdown-divider"></div>
 					<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
-					<!-- <a href="{{ route('logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a> -->
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="dropdown-item"><i class="icon-switch2"></i>logout</button>
+						<button type="submit" class="dropdown-item"><i class="icon-switch2"></i>Logout</button>
 					</form>
 				</div>
 			</li>
