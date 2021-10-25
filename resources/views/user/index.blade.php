@@ -9,20 +9,20 @@
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h6 class="card-title">Data User</h6>
-                <a href="{{ route('users.create') }}" class="btn btn-sm btn-success modal-show" >New User</a>
+                <a href="{{ route('user.create') }}" class="btn btn-sm btn-success modal-show">New User</a>
 
             </div>
             <div class="card-body py-0">
                 <table id="myTable" class='table'>
                     <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Username</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Level</th>
-                        <th>Aksi</th>
-                    </tr>
+                        <tr>
+                            <th>No.</th>
+                            <th>Username</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Level</th>
+                            <th>Aksi</th>
+                        </tr>
                     </thead>
                     <?php
                     $no = 1;
@@ -46,12 +46,12 @@
                             {{ $r->level }}
                         </td>
                         <td class="d-flex flex-row">
-                            <a href="{{ route('users.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">Edit</a>
-                            <form action="{{ route('users.destroy', $r->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">delete</button>
-                        
+                            <a href="{{ route('user.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">Edit</a>
+                            <form action="{{ route('user.destroy', $r->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">delete</button>
+
                             </form>
                         </td>
 

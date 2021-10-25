@@ -68,7 +68,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">
+					<a href="{{ route('user.index') }}" class="nav-link">
 						<i class="icon-users"></i>
 						<span>User</span></a>
 				</li>
@@ -127,12 +127,12 @@
 						</li>
 					</ul>
 					@if(Auth::user()->level === 'admin')
-						<ul class="nav nav-group-sub">
-							<li class="nav-item">
-								<a href="{{ route('bbm.index')}}" class="nav-link">
-									<i class="icon-gas"></i> <span>Pengajuan BBM</span></a></a>
-							</li>
-						</ul>
+					<ul class="nav nav-group-sub">
+						<li class="nav-item">
+							<a href="{{ route('bbm.index')}}" class="nav-link">
+								<i class="icon-gas"></i> <span>Pengajuan BBM</span></a></a>
+						</li>
+					</ul>
 					@endif
 				</li>
 				<!-- /main -->
