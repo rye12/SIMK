@@ -16,7 +16,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Plat Nomor</th>
+                            <th>Kendaraan</th>
                             <th>Jenis BBM</th>
                             <th>Jumlah Liter</th>
                             <th>Nominal</th>
@@ -35,7 +35,7 @@
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->id_kendaraan }}
+                            {{ $r->kendaraan }}
                         </td>
                         <td>
                             {{ $r->jenis }}
@@ -47,14 +47,11 @@
                             {{ $r->nominal }}
                         </td>
                         <td><a href="{{route('servis.foto',$r->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
+                        @foreach($pegawai as p)
                         <td>
-                            @if(!empty($r->user->name))
-                            {{$r->user->name}}
-                            @else
-                            -
-                            @endif
-
+                            {{$p->nama}}
                         </td>
+                        @endforeach
                         <td class="d-flex flex-row">
                             <a href="{{ route('bbm.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>

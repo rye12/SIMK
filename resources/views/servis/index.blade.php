@@ -17,7 +17,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Plat Nomor</th>
-                            <th>ID Pegawai</th>
+                            <th>NIP</th>
                             <th>Kebutuhan Sekarang</th>
                             <th>Kebutuhan Selanjutnya</th>
                             <th>Foto</th>
@@ -35,10 +35,10 @@
                             {{ $no++ }}
                         </td>
                         <td>
-                            {{ $r->id_kendaraan }}
+                            {{ $r->kendaraan }}
                         </td>
                         <td>
-                            {{ $r->id_pegawai }}
+                            {{ $r->nip_pegawai }}
                         </td>
                         <td>
                             {{ $r->kebutuhan_sekarang }}
@@ -48,12 +48,7 @@
                         </td>
                         <td><a href="{{route('servis.foto',$r->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>
-                            @if(!empty($r->user->name))
-                            {{$r->user->name}}
-                            @else
-                            -
-                            @endif
-
+                            {{$r->pemilik}}
                         </td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('servis.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">

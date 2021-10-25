@@ -1,8 +1,20 @@
 <form action="{{ route('bbm.store') }}" method="POST">
     @csrf
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Plat Nomor</label>
-    <input name="id_kendaraan" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan plat nomer" autocomplete="off" >
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Kendaraan</label>
+
+    <select class="form-control" name="id_kendaraan">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('kendaraan')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
     
   <div class="form-group">

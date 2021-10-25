@@ -121,4 +121,21 @@ class PajakController extends Controller
         return redirect()->route('pajak.index')
             ->with('success', 'Post deleted successfully');
     }
+
+    public function lihat($id)
+    {
+        $foto = DB::table('pajak_foto')->where('id_pajak', $id)->get();
+        return view('pajak.foto', compact('id','foto'));
+    }
+
+    public function fotoupload(Request $request, $id)
+    {
+        $file = $request->file('foto');
+        $tujuan_upload = 'files/pajak/';
+
+        $nama = $file->getClientOriginalName();
+        $file->move($tujuan_upload, $nama);
+        DB::table('pajak_foto')->insert(['file' => $nama, 'id_pajak' => $id, 'deskripsi' => $request->deskripsi]);
+        return back();
+    }
 }

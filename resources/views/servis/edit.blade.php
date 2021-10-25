@@ -2,23 +2,55 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-    <label for="exampleFormControlInput1">Plat</label>
-    <input name="id_kendaraan" type="text" class="form-control" id="plat" value="{{$servis->id_kendaraan}}" placeholder="Masukkan Plat Nomor Kendaraan" autocomplete="off" >
+    <label for="exampleFormControlInput1">Kendaraan</label>
+
+    <select class="form-control" name="id_kendaraan">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('kendaraan')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">Id pegawai</label>
-    <input name="id_pegawai" type="jenis" class="form-control" id="nama" value="{{$servis->id_pegawai}}"placeholder="Masukkan id pegawai" autocomplete="off" >
+    <label for="exampleFormControlInput1">NIP - Pegawai</label>
+
+    <select class="form-control" name="id_pegawai">
+      <option value=""></option>
+      <?php
+      $pegawai = DB::table('pegawai')->get();
+      foreach ($pegawai as $p) {
+
+      ?>
+        <option value="{{$p->id}}">{{ $p->nip }}</option>
+      <?php
+      }
+      ?>
+    </select>
   </div>
     
   <div class="form-group">
-    <label for="exampleFormControlInput1">Kebutuhan Sekarang</label>
-    <input name="kebutuhan_sekarang" type="text" class="form-control" id="kebutuhan_sekarang" value="{{$servis->kebutuhan_sekarang}}" placeholder="Masukkan kebutuhan kendaraan sekarang" autocomplete="off">
+    <label for="position-option">Kebutuhan Sekarang</label>
+    <select class="form-control" id="position-option" name="kebutuhan_sekarang">
+       @foreach ($barang as $kategori)
+          <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+       @endforeach
+    </select>
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">Kebutuhan Selanjutnya</label>
-    <input name="kebutuhan_selanjutnya" type="text" class="form-control" id="kebutuhan_selanjutnya" value="{{$servis->kebutuhan_selanjutnya}}" placeholder="Masukkan kebutuhan kendaraan selanjutnya" autocomplete="off">
+    <label for="position-option">Kebutuhan Selanjutnya</label>
+    <select class="form-control" id="position-option" name="kebutuhan_selanjutnya">
+       @foreach ($barang as $kategori)
+          <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+       @endforeach
+    </select>
   </div>
 
   <div class="form-group">
