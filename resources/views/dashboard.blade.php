@@ -99,7 +99,7 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-header">
 				<h5 class="card-title">Basic pie chart</h5>
@@ -112,49 +112,110 @@
 								<div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="500" height="300" aria-label="A chart." style="overflow: hidden;">
 										<defs id="_ABSTRACT_RENDERER_ID_33"></defs>
 										<g>
-											<rect x="347" y="15" width="153" height="88" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-											<g column-id="Work">
+											<rect x="500" y="15" width="153" height="88" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+											<g column-id="menungguVerifikasi">
 												<rect x="347" y="15" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-												<g><text text-anchor="start" x="364" y="25.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Work</text></g>
+												<g><text text-anchor="start" x="364" y="25.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Menunggu Verifikasi</text></g>
 												<circle cx="353" cy="21" r="6" stroke="none" stroke-width="0" fill="#2ec7c9"></circle>
 											</g>
-											<g column-id="Eat">
+											<g column-id="menungguPembayaran">
 												<rect x="347" y="34" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-												<g><text text-anchor="start" x="364" y="44.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Eat</text></g>
+												<g><text text-anchor="start" x="364" y="44.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Menunggu Pembayaran</text></g>
 												<circle cx="353" cy="40" r="6" stroke="none" stroke-width="0" fill="#b6a2de"></circle>
 											</g>
-											<g column-id="Commute">
+											<g column-id="prosesPembayaran">
 												<rect x="347" y="53" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-												<g><text text-anchor="start" x="364" y="63.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Commute</text></g>
+												<g><text text-anchor="start" x="364" y="63.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Proses Pembayaran</text></g>
 												<circle cx="353" cy="59" r="6" stroke="none" stroke-width="0" fill="#5ab1ef"></circle>
 											</g>
-											<g column-id="Watch TV">
+											<g column-id="pembayaranSelesai">
 												<rect x="347" y="72" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-												<g><text text-anchor="start" x="364" y="82.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Watch TV</text></g>
+												<g><text text-anchor="start" x="364" y="82.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Pembayaran Selesai</text></g>
 												<circle cx="353" cy="78" r="6" stroke="none" stroke-width="0" fill="#ffb980"></circle>
 											</g>
-											<g column-id="Sleep">
+											<g column-id="penyerahan">
 												<rect x="347" y="91" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
-												<g><text text-anchor="start" x="364" y="101.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Sleep</text></g>
+												<g><text text-anchor="start" x="364" y="101.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Penyerahan</text></g>
 												<circle cx="353" cy="97" r="6" stroke="none" stroke-width="0" fill="#d87a80"></circle>
+											</g>
+											<g column-id="pergantianPembayaran">
+												<rect x="347" y="100" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="120.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Pergantian Pembayaran</text></g>
+												<circle cx="353" cy="116" r="6" stroke="none" stroke-width="0" fill="#1aff9c"></circle>
 											</g>
 										</g>
 										<g>
-											<path d="M189,150L189,15A135,135,0,0,1,223.9405710888403,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#2ec7c9"></path><text text-anchor="start" x="278.38378230950497" y="140.32596185374723" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">45.8%</text>
+											<path d="M189,150L189,15A135,135,0,0,1,223.9405710888403,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#2ec7c9"></path>
+											<text text-anchor="start" x="278.38378230950497" y="140.32596185374723" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+												<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','1')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
 										</g>
 										<g>
-											<path d="M189,150L58.60001345097578,184.94057108884033A135,135,0,0,1,189,15L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#d87a80"></path><text text-anchor="start" x="88.46588543482142" y="89.33469248923318" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">29.2%</text>
+											<path d="M189,150L58.60001345097578,184.94057108884033A135,135,0,0,1,189,15L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#d87a80"></path>
+											<text text-anchor="start" x="88.46588543482142" y="89.33469248923318" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+											<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','2')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
 										</g>
 										<g>
-											<path d="M189,150L93.5405845398161,245.45941546018392A135,135,0,0,1,58.60001345097578,184.94057108884033L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#ffb980"></path><text text-anchor="start" x="81.95586138688061" y="208.78508387858582" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+											<path d="M189,150L93.5405845398161,245.45941546018392A135,135,0,0,1,58.60001345097578,184.94057108884033L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#ffb980"></path>
+											<text text-anchor="start" x="81.95586138688061" y="208.78508387858582" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+											<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','3')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
 										</g>
 										<g>
-											<path d="M189,150L154.05942891115967,280.3999865490242A135,135,0,0,1,93.5405845398161,245.45941546018392L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#5ab1ef"></path><text text-anchor="start" x="120.84766500034016" y="250.5926717792545" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+											<path d="M189,150L154.05942891115967,280.3999865490242A135,135,0,0,1,93.5405845398161,245.45941546018392L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#5ab1ef"></path>
+											<text text-anchor="start" x="120.84766500034016" y="250.5926717792545" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+											<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','4')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
 										</g>
 										<g>
-											<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path><text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+											<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path>
+											<text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+											<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','5')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
 										</g>
-										<g></g>
+										<g>
+										<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path>
+											<text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
+											<?php
+												$statusPajak = DB::table('pajak')
+												->select('id_verifikasi')
+												->where('id_verifikasi','=','6')
+												->count();
+												?>
+												{{$statusPajak}}%
+											</text>
+										</g>
 									</svg>
 									<div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
 										<table>
@@ -166,23 +227,23 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>Work</td>
-													<td>11</td>
+													<td>Menunggu Verifikasi</td>
+													<td>100</td>
 												</tr>
 												<tr>
-													<td>Eat</td>
+													<td>Menunggu Pembayaran</td>
 													<td>2</td>
 												</tr>
 												<tr>
-													<td>Commute</td>
+													<td>Proses Pembayaran</td>
 													<td>2</td>
 												</tr>
 												<tr>
-													<td>Watch TV</td>
+													<td>Pembayaran Selesai</td>
 													<td>2</td>
 												</tr>
 												<tr>
-													<td>Sleep</td>
+													<td>Penyerahan</td>
 													<td>7</td>
 												</tr>
 											</tbody>
