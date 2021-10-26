@@ -149,49 +149,27 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
 
-        // $data = $request->validate([
-        //     'username' => 'required',
-        //     //'password' => 'required',
-        //     'nip' => 'required',
-        //     'nama' => 'required',
-        //     'alamat' => 'required',
-        //     'no_hp' => 'required',
-        //     'id_jabatan' => 'required',
-        //     'email' => 'required',
-        // ]);
-
-        /// mengubah data berdasarkan request dan parameter yang dikirimkan
-        // $user->update($request->all());
         if (Auth::user() == '') {
             return view('auth.login');
             exit();
         }
-        if (!empty($request->password)) {
-            $pegawai =  DB::table("pegawai")->where('id', $id)->update([
-                'username' => $request->username,
-                'password' => $request->password,
-                'nip' => $request->nip,
-                'nama' => $request->nama,
-                'alamat' => $request->alamat,
-                'no_hp' => $request->no_hp,
-                'id_jabatan' => $request->id_jabatan,
-                'email' => $request->email,
-
-            ]);
-            $pegawai['password'] = bcrypt($request->password);
-        } else {
-            $pegawai =  DB::table("pegawai")->where('id', $id)->update([
-                'username' => $request->username,
-                'nip' => $request->nip,
-                'nama' => $request->nama,
-                'alamat' => $request->alamat,
-                'no_hp' => $request->no_hp,
-                'id_jabatan' => $request->id_jabatan,
-                'email' => $request->email,
-
-            ]);
+        $pegawai = DB::table('pegawai')->where('id', $id)->first();
+        $pass = $pegawai->password;
+        $data = [
+            'username' => $request->username,
+            'password' => $pass,
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'id_jabatan' => $request->id_jabatan,
+            'email' => $request->email,
+        ];
+        if ($request->password != null) {
+            $data['password'] = bcrypt($request->password);
         }
 
+        DB::table('pegawai')->where('id', $id)->update($data);
         return redirect()->route('pegawai.index')->with('success', 'Post updated successfully');
     }
 
