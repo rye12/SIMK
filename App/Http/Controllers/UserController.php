@@ -100,4 +100,5 @@ class UserController extends Controller
         return redirect()->route('user.index')
             ->with('success', 'Post deleted successfully');
     }
+    
 }

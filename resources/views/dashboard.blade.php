@@ -161,8 +161,10 @@
 														var jml1 = document.querySelector(jmlPajak);
 														var sts1 = document.querySelector(statusPajak);
 														var hitung1 = (sts1 / jml1) * 100;
+
+														return hitung1;
 													}
-													var hasil1 = document.write(hitung1);
+													document.getElementById("hasil1").innerHTML = persen1();
 												</script>
 												<a id="hasil1"></a>
 											</text>
@@ -288,5 +290,156 @@
 
 	</div>
 </div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="{{asset('assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/echarts.min.js')}}"></script>
+
+<div class="col-md-12">
+	<h1 class="text-center">how to create dynamic pie chart in laravel - websolutionstuff.com</h1>
+	<div class="col-xl-6" style="margin-top: 30px;">
+		<div class="card">
+			<div class="card-body">
+				<div class="chart-container">
+					<div class="chart has-fixed-height" id="pie_basic"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php
+$status1 = DB::table('pajak')->where('id_verifikasi', '1')->get();
+$status2 = DB::table('pajak')->where('id_verifikasi', '2')->get();
+$status3 = DB::table('pajak')->where('id_verifikasi', '3')->get();
+$status4 = DB::table('pajak')->where('id_verifikasi', '4')->get();
+$status5 = DB::table('pajak')->where('id_verifikasi', '5')->get();
+$status6 = DB::table('pajak')->where('id_verifikasi', '6')->get();
+$status1_count = count($status1);
+$status2_count = count($status2);
+$status3_count = count($status3);
+$status4_count = count($status4);
+$status5_count = count($status5);
+$status6_count = count($status6);
+setcookie('$status1_count,$status2_count,$status3_count,$status4_count,$status5_count,$status6_count');
+?>
+
+<script type="text/javascript">
+	var pie_basic_element = document.getElementById('pie_basic');
+	var x = document.cookie;
+	document.write(x);
+	if (pie_basic_element) {
+		var pie_basic = echarts.init(pie_basic_element);
+		pie_basic.setOption({
+			color: [
+				'#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80',
+				'#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa',
+				'#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050',
+				'#59678c', '#c9ab00', '#7eb00a', '#6f5553', '#c14089'
+			],
+
+			textStyle: {
+				fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+				fontSize: 13
+			},
+
+			title: {
+				text: 'Pie Chart Example',
+				left: 'center',
+				textStyle: {
+					fontSize: 17,
+					fontWeight: 500
+				},
+				subtextStyle: {
+					fontSize: 12
+				}
+			},
+
+			tooltip: {
+				trigger: 'item',
+				backgroundColor: 'rgba(0,0,0,0.75)',
+				padding: [10, 15],
+				textStyle: {
+					fontSize: 13,
+					fontFamily: 'Roboto, sans-serif'
+				},
+				formatter: "{a} <br/>{b}: {c} ({d}%)"
+			},
+
+			legend: {
+				orient: 'horizontal',
+				bottom: '0%',
+				left: 'center',
+				data: ['Fruit', 'Vegitable', 'Grains'],
+				itemHeight: 8,
+				itemWidth: 8
+			},
+
+			series: [{
+				name: 'Product Type',
+				type: 'pie',
+				radius: '70%',
+				center: ['50%', '50%'],
+				itemStyle: {
+					normal: {
+						borderWidth: 1,
+						borderColor: '#fff'
+					}
+				},
+				data: [{
+						value: {
+							{
+								$status1_count
+							}
+						},
+						name: '1'
+					},
+					{
+						value: {
+							{
+								$status2_count
+							}
+						},
+						name: '2'
+					},
+					{
+						value: {
+							{
+								$status3_count
+							}
+						},
+						name: '3'
+					},
+					{
+						value: {
+							{
+								$status4_count
+							}
+						},
+						name: '4'
+					},
+					{
+						value: {
+							{
+								$status5_count
+							}
+						},
+						name: '5'
+					},
+					{
+						value: {
+							{
+								$status6_count
+							}
+						},
+						name: '6'
+					}
+				]
+			}]
+		});
+	}
+</script>
 
 @endsection

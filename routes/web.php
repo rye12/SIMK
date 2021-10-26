@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('dashboard');
 })->name('dashboard');
 
+
 // Route::get('/user1',[UserController::Class,'index'])->name('user1');
 
 // Route::get('/admin1', 'App\Http\Controllers\AdminController@index')->name('admin');
