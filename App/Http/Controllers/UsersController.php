@@ -44,7 +44,7 @@ class UsersController extends Controller
         $data['password'] = bcrypt($request->password);
         User::create($data);
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'Post created successfully.');
     }
 

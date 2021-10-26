@@ -8,8 +8,8 @@
 
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h6 class="card-title"><a href="{{ route('pegawai.index') }}" class="btn btn-sm btn-warning "><i class="icon"></i> kembali</a> | Data Kendaraan</h6>
-                <a href="{{ route('pegawai.kendaraan.tambah',$id) }}" class="btn btn-sm btn-success modal-show">New Kendaraan</a>
+                <h3 class="card-title"><a href="{{ route('pegawai.index') }}" class="btn btn-sm btn-warning "><i class="icon"></i> kembali</a> | Data Kendaraan</h3>
+                <a href="{{ route('pegawai.kendaraan.tambah',$id) }}" class="btn btn-sm btn-success modal-show">Tambah Kendaraan</a>
 
             </div>
             <div class="card-body py-0">
