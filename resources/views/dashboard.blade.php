@@ -98,20 +98,107 @@
 	</div>
 </div>
 
-<div class="card">
-	<div class="card-header">
-		<h5 class="card-title">Basic pie chart</h5>
-	</div>
-
-	<div class="card-body">
-		<div class="chart-container">
-			<div class="chart has-fixed-height" id="pie_basic" _echarts_instance_="ec_1635144545550" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
-				<div style="position: relative; width: 458px; height: 400px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
-					<canvas data-zr-dom-id="zr_0" width="458" height="400" style="position: absolute; left: 0px; top: 0px; width: 458px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="card-title">Basic pie chart</h5>
+			</div>
+			<div class="card-body">
+				<div class="chart-container has-scroll text-center">
+					<div class="d-inline-block" id="google-pie">
+						<div style="position: relative;">
+							<div dir="ltr" style="position: relative; width: 500px; height: 300px;">
+								<div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="500" height="300" aria-label="A chart." style="overflow: hidden;">
+										<defs id="_ABSTRACT_RENDERER_ID_33"></defs>
+										<g>
+											<rect x="347" y="15" width="153" height="88" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+											<g column-id="Work">
+												<rect x="347" y="15" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="25.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Work</text></g>
+												<circle cx="353" cy="21" r="6" stroke="none" stroke-width="0" fill="#2ec7c9"></circle>
+											</g>
+											<g column-id="Eat">
+												<rect x="347" y="34" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="44.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Eat</text></g>
+												<circle cx="353" cy="40" r="6" stroke="none" stroke-width="0" fill="#b6a2de"></circle>
+											</g>
+											<g column-id="Commute">
+												<rect x="347" y="53" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="63.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Commute</text></g>
+												<circle cx="353" cy="59" r="6" stroke="none" stroke-width="0" fill="#5ab1ef"></circle>
+											</g>
+											<g column-id="Watch TV">
+												<rect x="347" y="72" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="82.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Watch TV</text></g>
+												<circle cx="353" cy="78" r="6" stroke="none" stroke-width="0" fill="#ffb980"></circle>
+											</g>
+											<g column-id="Sleep">
+												<rect x="347" y="91" width="153" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect>
+												<g><text text-anchor="start" x="364" y="101.2" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#222222">Sleep</text></g>
+												<circle cx="353" cy="97" r="6" stroke="none" stroke-width="0" fill="#d87a80"></circle>
+											</g>
+										</g>
+										<g>
+											<path d="M189,150L189,15A135,135,0,0,1,223.9405710888403,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#2ec7c9"></path><text text-anchor="start" x="278.38378230950497" y="140.32596185374723" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">45.8%</text>
+										</g>
+										<g>
+											<path d="M189,150L58.60001345097578,184.94057108884033A135,135,0,0,1,189,15L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#d87a80"></path><text text-anchor="start" x="88.46588543482142" y="89.33469248923318" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">29.2%</text>
+										</g>
+										<g>
+											<path d="M189,150L93.5405845398161,245.45941546018392A135,135,0,0,1,58.60001345097578,184.94057108884033L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#ffb980"></path><text text-anchor="start" x="81.95586138688061" y="208.78508387858582" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+										</g>
+										<g>
+											<path d="M189,150L154.05942891115967,280.3999865490242A135,135,0,0,1,93.5405845398161,245.45941546018392L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#5ab1ef"></path><text text-anchor="start" x="120.84766500034016" y="250.5926717792545" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+										</g>
+										<g>
+											<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path><text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text>
+										</g>
+										<g></g>
+									</svg>
+									<div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+										<table>
+											<thead>
+												<tr>
+													<th>Task</th>
+													<th>Hours per Day</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Work</td>
+													<td>11</td>
+												</tr>
+												<tr>
+													<td>Eat</td>
+													<td>2</td>
+												</tr>
+												<tr>
+													<td>Commute</td>
+													<td>2</td>
+												</tr>
+												<tr>
+													<td>Watch TV</td>
+													<td>2</td>
+												</tr>
+												<tr>
+													<td>Sleep</td>
+													<td>7</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 510px; white-space: nowrap; font-family: Roboto; font-size: 12px;">Sleep</div>
+							<div></div>
+						</div>
+					</div>
 				</div>
-				<div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(0, 0, 0, 0.75); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 13px / 20px Roboto, sans-serif; padding: 10px 15px; left: 145px; top: 141px; pointer-events: none;">Browsers <br>Chrome: 1548 (60.42%)</div>
 			</div>
 		</div>
+
+
 	</div>
 </div>
 
