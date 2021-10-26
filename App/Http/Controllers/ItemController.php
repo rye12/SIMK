@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class ItemController extends Controller
 {
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('pengajuan_barang as a')
             ->leftjoin('pegawai as b', 'b.id', 'a.id_pegawai')
             ->leftjoin('barang_kategori as c', 'c.id', 'a.id_barang')
@@ -21,6 +26,10 @@ class ItemController extends Controller
 
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pegawai = DB::table('pegawai')->get();
         $barang = DB::table('barang_kategori')->get();
         return view('item.create', compact('pegawai', 'barang'));
@@ -28,6 +37,10 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $item = [
             'id_pegawai' => $request->id_pegawai,
             'id_barang' => $request->id_barang,
@@ -45,6 +58,10 @@ class ItemController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $item = DB::table("pengajuan_barang")->where('id', $id)->first();
         $jenis = DB::table("barang_kategori")->get();
         $verifikasi = DB::table('verifikasi_item')->get();
@@ -53,6 +70,10 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $kendaraan = DB::table('pengajuan_barang')->where('id', $id)->update([
             'id_pegawai' => $request->nip,
             'id_barang' => $request->id_barang,
@@ -64,6 +85,10 @@ class ItemController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $del = DB::table('pengajuan_barang')->where('id', $id);
         $del->delete();
 
