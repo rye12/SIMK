@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class BarangController extends Controller
 {
 
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('barang as a')
             ->leftjoin('barang_kategori as b', 'a.id_kategori', 'b.id')
             ->select("a.*", "b.nama as kategori")
@@ -27,6 +32,10 @@ class BarangController extends Controller
      */
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $kategori = DB::table('barang_kategori')->get();
         return view('barang.create', compact('kategori'));
     }
@@ -39,7 +48,10 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-       
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
@@ -71,6 +83,10 @@ class BarangController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = DB::table("barang")->where('id', $id)->first();
         $kategori = DB::table("barang_kategori")->get();
         return view('barang.edit', compact('barang', 'kategori'));
@@ -85,7 +101,10 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
@@ -106,6 +125,10 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = DB::table("barang")->where('id', $id)->delete();
 
         return redirect()->route('barang.index')
