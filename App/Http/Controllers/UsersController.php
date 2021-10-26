@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function index()
     {
@@ -44,7 +44,7 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
         User::create($data);
 
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('success', 'Post created successfully.');
     }
 

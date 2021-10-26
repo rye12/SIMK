@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\AdminController;
 //use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PegawaiController;
@@ -46,8 +46,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 // Route::resource('admins', AdminController::class);
 
-Route::resource('user', UserController::class);
-Route::DELETE('/user/{id}', 'App\Http\Controllers\UserController@destroy');
+Route::resource('user', UsersController::class);
+Route::DELETE('/user/{id}', 'App\Http\Controllers\UsersController@destroy');
 
 
 

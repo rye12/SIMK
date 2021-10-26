@@ -20,10 +20,6 @@
             <label for="exampleFormControlInput1">NIP</label>
             <input name="nip" type="text" class="form-control" value="{{$pegawai->nip}}" autocomplete="off">
         </div>
-        <!-- <div class="form-group col-md-6">
-      <label for="exampleFormControlInput1">Jabatan</label>
-      <input name="id_jabatan" type="text" class="form-control" autocomplete="off">
-    </div> -->
         <div class="form-group col-md-6">
             <label for="exampleFormControlInput1">Jabatan</label>
             <select class="custom-select" name="id_jabatan">

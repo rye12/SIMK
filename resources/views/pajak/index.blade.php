@@ -8,9 +8,9 @@
 
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h4 class="card-title">Data Pajak</h4>
+                <h3 class="card-title">Data Pajak</h3>
                 <a href="{{ route('pajak.create') }}" class="btn btn-sm btn-success modal-show">
-                    <i class="icon-user-plus" style="margin-right: 5px;"></i>
+                    <i class="icon-plus-circle2" style="margin-right: 5px;"></i>
                     Pengajuan Pajak</a>
 
             </div>
@@ -53,7 +53,7 @@
                             {{ $r->status }}
                         </td>
                         <td>
-                        <a href="{{ route('pajak.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a>
+                            <a href="{{ route('pajak.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a>
                         </td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('pajak.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
