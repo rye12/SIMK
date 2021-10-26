@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function index()
     {

@@ -18,6 +18,5 @@
         <label for="formGroupExampleInput2">Password</label>
         <input name="password" type="password" class="form-control" placeholder="kosongi jika tidak ingin mengganti password anda">
     </div>
-
     <button type="submit" class="btn btn-primary">Update</button>
 </form>

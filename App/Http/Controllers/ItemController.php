@@ -74,12 +74,17 @@ class ItemController extends Controller
             return view('auth.login');
             exit();
         }
-        $kendaraan = DB::table('pengajuan_barang')->where('id', $id)->update([
+        $item = DB::table('pengajuan_barang')->where('id', $id)->first();
+        $data = [
             'id_pegawai' => $request->nip,
             'id_barang' => $request->id_barang,
             'keterangan' => $request->keterangan,
-            'verifikasi' => $request->verifikasi,
-        ]);
+            'verifikasi' => $item->verifikasi,
+        ];
+        if (Auth::user() === 'admin') {
+            $data['verifikasi'] = $request->verifikasi;
+        }
+        DB::table('pengajuan_barang')->where('id', $id)->update($data);
         return redirect()->route('item.index')->with('success', 'Post updated successfully');
     }
 
