@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Servis;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class ServisController extends Controller
 {
     public function index()
     {
-
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('servis as s')
         ->leftjoin('pegawai as p', 's.id_pegawai', 'p.id')
         ->leftjoin('kendaraan as k', 's.id_kendaraan', 'k.id')
@@ -23,6 +27,10 @@ class ServisController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $sekarang = DB::table('barang_kategori')->where('id', $request->kebutuhan_sekarang)->first();
         $selanjutnya = DB::table('barang_kategori')->where('id', $request->kebutuhan_selanjutnya)->first();
         $nama = [
@@ -42,12 +50,20 @@ class ServisController extends Controller
 
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = DB::table('barang_kategori')->get();
         return view('servis.create', compact('barang'));
     }
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = DB::table('barang_kategori')->get();
         $servis = DB::table("servis")->where('id',$id)->first();
         $nama = DB::table("users")->get();
@@ -64,6 +80,10 @@ class ServisController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $sekarang = DB::table('barang_kategori')->where('id', $request->kebutuhan_sekarang)->first();
         $selanjutnya = DB::table('barang_kategori')->where('id', $request->kebutuhan_selanjutnya)->first();
         $servis = DB::table('servis')->where('id',$id)->update([
@@ -79,6 +99,10 @@ class ServisController extends Controller
 
     public function destroy(Servis $servis, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $servis = DB::table('servis')->where('id', $id);
         $servis->delete();
 
@@ -89,12 +113,20 @@ class ServisController extends Controller
 
     public function lihat($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $foto = DB::table('servis_foto')->where('id_servis', $id)->get();
         return view('servis.foto', compact('id','foto'));
     }
 
     public function fotoupload(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $file = $request->file('foto');
         $tujuan_upload = 'files/servis/';
 
