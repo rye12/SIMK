@@ -148,22 +148,37 @@
 											<path d="M189,150L189,15A135,135,0,0,1,223.9405710888403,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#2ec7c9"></path>
 											<text text-anchor="start" x="278.38378230950497" y="140.32596185374723" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
 												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','1')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '1')
+													->count();
 												?>
-												{{$statusPajak}}%
+												<script>
+													function persen1() {
+														var jml1 = document.querySelector(jmlPajak);
+														var sts1 = document.querySelector(statusPajak);
+														var hitung1 = (sts1 / jml1) * 100;
+														$hasil1.data(hitung1);
+														document.write(hasil1);
+													}
+												</script>
+												<a id="hasil1"></a>
 											</text>
 										</g>
 										<g>
 											<path d="M189,150L58.60001345097578,184.94057108884033A135,135,0,0,1,189,15L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#d87a80"></path>
 											<text text-anchor="start" x="88.46588543482142" y="89.33469248923318" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
-											<?php
+												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','2')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '2')
+													->count();
 												?>
 												{{$statusPajak}}%
 											</text>
@@ -171,11 +186,14 @@
 										<g>
 											<path d="M189,150L93.5405845398161,245.45941546018392A135,135,0,0,1,58.60001345097578,184.94057108884033L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#ffb980"></path>
 											<text text-anchor="start" x="81.95586138688061" y="208.78508387858582" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
-											<?php
+												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','3')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '3')
+													->count();
 												?>
 												{{$statusPajak}}%
 											</text>
@@ -183,11 +201,14 @@
 										<g>
 											<path d="M189,150L154.05942891115967,280.3999865490242A135,135,0,0,1,93.5405845398161,245.45941546018392L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#5ab1ef"></path>
 											<text text-anchor="start" x="120.84766500034016" y="250.5926717792545" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
-											<?php
+												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','4')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '4')
+													->count();
 												?>
 												{{$statusPajak}}%
 											</text>
@@ -195,23 +216,29 @@
 										<g>
 											<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path>
 											<text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
-											<?php
+												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','5')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '5')
+													->count();
 												?>
 												{{$statusPajak}}%
 											</text>
 										</g>
 										<g>
-										<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path>
+											<path d="M189,150L223.9405710888403,280.3999865490242A135,135,0,0,1,154.05942891115967,280.3999865490242L189,150A0,0,0,0,0,189,150" stroke="#ffffff" stroke-width="1" fill="#b6a2de"></path>
 											<text text-anchor="start" x="176.50000000000003" y="270.5631889090833" font-family="Roboto" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">
-											<?php
+												<?php
+												$jmlPajak = DB::table('pajak')
+													->select('id_verifikasi')
+													->count();
 												$statusPajak = DB::table('pajak')
-												->select('id_verifikasi')
-												->where('id_verifikasi','=','6')
-												->count();
+													->select('id_verifikasi')
+													->where('id_verifikasi', '=', '6')
+													->count();
 												?>
 												{{$statusPajak}}%
 											</text>
