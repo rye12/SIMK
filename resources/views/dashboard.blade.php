@@ -161,8 +161,7 @@
 														var jml1 = document.querySelector(jmlPajak);
 														var sts1 = document.querySelector(statusPajak);
 														var hitung1 = (sts1 / jml1) * 100;
-														$hasil1.data(hitung1);
-														document.write(hasil1);
+														var hasil1 = document.write(hitung1);
 													}
 												</script>
 												<a id="hasil1"></a>
