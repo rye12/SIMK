@@ -6,19 +6,26 @@ use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use Auth;
 
 class PegawaiController extends Controller
 {
     public function index()
     {
-
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('pegawai')->get();
-
         return view('pegawai.index', compact('data'));
     }
 
     public function kendaraan($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('kendaraan_pegawai as a')
             ->leftjoin('kendaraan as b', 'b.id', 'a.id_kendaraan')
             ->leftjoin('pegawai as c', 'c.id', 'a.id_pegawai')
@@ -31,12 +38,20 @@ class PegawaiController extends Controller
 
     public function kendaraanTambah($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $id = $id;
         $kendaraan = DB::table('kendaraan')->get();
         return view('pegawai.kendaraan-tambah', compact('id', 'kendaraan'));
     }
     public function kendaraanSimpan(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         DB::table('kendaraan_pegawai')->insert([
             'id_pegawai' => $request->id_pegawai,
             'id_kendaraan' => $request->id_kendaraan,
@@ -46,17 +61,29 @@ class PegawaiController extends Controller
 
     public function kendaraanHapus($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         DB::table('kendaraan_pegawai')->where('id', $id)->delete();
         return back();
     }
     public function kendaraanStatus($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $check = DB::table('kendaraan_pegawai')->where('id', $id)->first();
         $st = $check->status == 1 ? 0 : 1;
         DB::table('kendaraan_pegawai')->where('id', $id)->update(['status' => $st]);
     }
     public function kendaraanServis($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('servis as a')
             ->leftjoin('kendaraans as b', 'b.id', 'a.id_kendaraan')
             ->leftjoin('users as c', 'c.id', 'a.id_pegawai')
@@ -89,13 +116,13 @@ class PegawaiController extends Controller
     //     return back();
     // }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $jabatan = DB::table('jabatan')->get();
         return view('pegawai.create', compact('jabatan'));
     }
@@ -103,6 +130,10 @@ class PegawaiController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pegawai = DB::table("pegawai")->where('id', $id)->first();
         $jabatan = DB::table('jabatan')->get();
         return view('pegawai.edit', compact('pegawai', 'jabatan'));
@@ -131,6 +162,10 @@ class PegawaiController extends Controller
 
         /// mengubah data berdasarkan request dan parameter yang dikirimkan
         // $user->update($request->all());
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         if (!empty($request->password)) {
             $pegawai =  DB::table("pegawai")->where('id', $id)->update([
                 'username' => $request->username,
@@ -168,6 +203,10 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $pegawai = DB::table("pegawai")->where('id', $id)->delete();
 
         return redirect()->route('pegawai.index')
@@ -176,6 +215,10 @@ class PegawaiController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $file = $request->file('foto');
         $tujuan_upload = 'files/pegawai/';
         $nama = $file->getClientOriginalName();
