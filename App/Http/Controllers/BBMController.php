@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Servis;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class BBMController extends Controller
 {
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('bbm as b')
         ->leftjoin('kendaraan as k', 'b.id_kendaraan', 'k.id')
         ->leftjoin('pegawai as p', 'b.id_pegawai', 'p.id')
@@ -23,6 +28,10 @@ class BBMController extends Controller
 
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $nama = [
             'nama'=> $request->nama
         ];
@@ -39,11 +48,19 @@ class BBMController extends Controller
 
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         return view('bbm.create');
     }
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $bbm= DB::table("bbm")->where('id',$id)->first();
         $jenis = DB::table("bbm_jenis")->get();
         return view('bbm.edit', compact('bbm','jenis'));
@@ -59,6 +76,10 @@ class BBMController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $bbm = DB::table('bbm')->where('id',$id)->update([
             'id_kendaraan' => $request->id_kendaraan,
             'id_pegawai' => $request->id_pegawai,
@@ -71,6 +92,10 @@ class BBMController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $bbm = DB::table('bbm')->where('id', $id);
         $bbm->delete();
 
@@ -81,12 +106,20 @@ class BBMController extends Controller
 
     public function lihat($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $foto = DB::table('bbm_foto')->where('id_bbm', $id)->get();
         return view('bbm.foto', compact('id','foto'));
     }
 
     public function fotoupload(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $file = $request->file('foto');
         $tujuan_upload = 'files/bbm/';
 

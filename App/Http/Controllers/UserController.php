@@ -5,38 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = DB::table('users')->get();
         return view('user.index', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         return view('user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $data = $request->validate([
             'username' => 'required',
             'name' => 'required',
@@ -44,14 +41,9 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-
         $data['password'] = bcrypt($request->password);
-
-        /// insert setiap request dari form ke dalam database via model
-        /// jika menggunakan metode ini, maka nama field dan nama form harus sama
         User::create($data);
 
-        /// redirect jika sukses menyimpan data
         return redirect()->route('users.index')
             ->with('success', 'Post created successfully.');
     }
@@ -59,18 +51,29 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         return view('user.show', compact('user'));
     }
 
     public function edit($id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $user = DB::table('users')->where('id', $id)->first();
         return view('user.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $user = DB::table('users')->where('id', $id)->first();
         $pass = $user->password;
         $data = [
@@ -88,6 +91,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $user->delete();
 
         return redirect()->route('user.index')
