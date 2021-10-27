@@ -3,7 +3,18 @@
     @method('PUT')
     <div class="form-group">
         <label for="exampleFormControlInput1">NIP Pegawai</label>
-        <input name="nip" type="text" class="form-control" autofocus='true' autocomplete="off" value="{{$item->id_pegawai}}">
+        <select class="form-control" name="id_pegawai">
+            <option value=""></option>
+            <?php
+            $pegawai = DB::table('pegawai')->get();
+            foreach ($pegawai as $p) {
+
+            ?>
+                <option {{$p->id==$item->id_pegawai?'selected':''}} value="{{$p->id}}">{{$p->nip}} - {{$p->nama}}</option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Barang</label>

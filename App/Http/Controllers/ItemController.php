@@ -76,7 +76,7 @@ class ItemController extends Controller
         }
         $item = DB::table('pengajuan_barang')->where('id', $id)->first();
         $data = [
-            'id_pegawai' => $request->nip,
+            'id_pegawai' => $request->id_pegawai,
             'id_barang' => $request->id_barang,
             'keterangan' => $request->keterangan,
             'verifikasi' => $item->verifikasi,

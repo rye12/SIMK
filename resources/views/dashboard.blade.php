@@ -9,7 +9,7 @@
 			<a href="#" class="header-elements-toggle text-body d-lg-none"><i class="icon-more"></i></a>
 		</div>
 
-		<div class="header-elements d-none text-center text-lg-left mb-3 mb-lg-0">
+		<!-- <div class="header-elements d-none text-center text-lg-left mb-3 mb-lg-0">
 			<div class="btn-group position-static">
 				<button type="button" class="btn btn-primary"><i class="icon-stack2 mr-2"></i>Report</button>
 				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"></button>
@@ -19,7 +19,7 @@
 					<a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Export to CSV</a>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
