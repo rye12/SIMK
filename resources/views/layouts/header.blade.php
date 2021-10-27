@@ -37,9 +37,9 @@
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right">
-					<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+					<!-- <a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
 					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+					<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a> -->
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
 						<button type="submit" class="dropdown-item"><i class="icon-switch2"></i>Logout</button>
