@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Notifikasi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_pegawai', 'keterangan'
+    ];
 }

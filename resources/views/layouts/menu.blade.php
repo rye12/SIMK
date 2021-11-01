@@ -129,6 +129,14 @@
 						</li>
 					</ul>
 				</li>
+				<li class="nav-item">
+					<a href="{{ route('notifikasi.index') }}" class="nav-link">
+						<i class="icon-bell3"></i>
+						<span>
+							Notifikasi
+						</span>
+					</a>
+				</li>
 				<!-- /main -->
 
 				<!-- Forms -->

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class NotifikasiController extends Controller
 {
     public function index()
     {
-        return view('notifikasi.index');
+        $data = DB::table('notifikasi as a')->get();
+
+        return view('notifikasi.index', compact('data'));
     }
 
     public function create()

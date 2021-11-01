@@ -11,6 +11,7 @@ use App\Http\Controllers\BBMController;
 use App\Http\Controllers\ServisController;
 use App\Http\Controllers\PajakController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\NotifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,3 +115,5 @@ Route::get('gudang/barang-masuk', 'App\Http\Controllers\GudangController@barangM
 Route::post('gudang/barang-masuk', 'App\Http\Controllers\GudangController@barangMasukSimpan')->name('gudang.barang.masuk');
 Route::get('gudang/barang-keluar', 'App\Http\Controllers\GudangController@barangKeluarData')->name('gudang.barang.keluar');
 Route::post('gudang/barang-keluar', 'App\Http\Controllers\GudangController@barangKeluarSimpan')->name('gudang.barang.keluar');
+
+Route::resource('notifikasi', NotifikasiController::class);
