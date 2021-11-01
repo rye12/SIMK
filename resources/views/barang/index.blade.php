@@ -14,8 +14,8 @@
 
             </div>
             <div class="card-body py-0">
-                <table id="myTable" class='table'>
-                    <thead>
+                <table id="myTable" class='table' >
+                    <thead style="background: #ddd;">
                         <tr>
                             <th>No</th>
                             <th>Kode</th>

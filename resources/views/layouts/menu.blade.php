@@ -89,19 +89,19 @@
 						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="{{ route('barang.index') }}" class="nav-link">
+						<li class="nav-item"><a href="{{ route('gudang.barang.masuk') }}" class="nav-link">
 								<i class="icon-box-add"></i><span>Barang Masuk</span></a>
 						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
 						<li class="nav-item">
-							<a href="{{ route('barang.index') }}" class="nav-link">
+							<a href="{{ route('gudang.barang.keluar') }}" class="nav-link">
 								<i class="icon-box-remove"></i><span>Barang Keluar</span></a>
 						</li>
 					</ul>
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
 						<li class="nav-item">
-							<a href="{{ route('barang.index') }}" class="nav-link">
+							<a href="{{ route('gudang.stok') }}" class="nav-link">
 								<i class="icon-cabinet"></i><span>Stok Barang</span></a>
 						</li>
 					</ul>

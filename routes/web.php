@@ -39,7 +39,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('dashboard');
 })->name('dashboard');
 
-
 // Route::get('/user1',[UserController::Class,'index'])->name('user1');
 
 // Route::get('/admin1', 'App\Http\Controllers\AdminController@index')->name('admin');
@@ -108,3 +107,10 @@ Route::DELETE('/bbm/{id}', 'App\Http\Controllers\BBMController@destroy');
 //pengajuan barang
 Route::resource('item', ItemController::class);
 Route::DELETE('/item/{id}', 'App\Http\Controllers\ItemController@destroy');
+
+//gudang
+Route::get('gudang/stok', 'App\Http\Controllers\GudangController@stok')->name('gudang.stok');
+Route::get('gudang/barang-masuk', 'App\Http\Controllers\GudangController@barangMasukData')->name('gudang.barang.masuk');
+Route::post('gudang/barang-masuk', 'App\Http\Controllers\GudangController@barangMasukSimpan')->name('gudang.barang.masuk');
+Route::get('gudang/barang-keluar', 'App\Http\Controllers\GudangController@barangKeluarData')->name('gudang.barang.keluar');
+Route::post('gudang/barang-keluar', 'App\Http\Controllers\GudangController@barangKeluarSimpan')->name('gudang.barang.keluar');

@@ -17,9 +17,9 @@
                         <tr>
                             <th>No.</th>
                             <th>Jenis Kendaraan</th>
-                            <th>NIP</th>
-                            <th>Kebutuhan Sekarang</th>
-                            <th>Kebutuhan Selanjutnya</th>
+                            <th>Pegawai</th>
+                            <th>Servis Sekarang</th>
+                            <th>Servis Berikutnya</th>
                             <th>Foto</th>
                             <th>Pemilik</th>
                             <th>Aksi</th>
@@ -38,13 +38,30 @@
                             {{ $r->kendaraan }}
                         </td>
                         <td>
-                            {{ $r->nip_pegawai }}
+                            {{ $r->pemilik }}
                         </td>
                         <td>
-                            {{ $r->kebutuhan_sekarang }}
+                            <ul>
+                                <?php    $skr = DB::table('servis_sekarang as a')->leftjoin('barang as b','a.id_barang','b.id')->where('id_servis',$r->id)->get();   ?>
+                            <?php foreach ($skr as $b): ?>
+                                <li>{{ $b->nama }}</li>
+                            <?php endforeach ?>
+                            </ul>
                         </td>
                         <td>
-                            {{ $r->kebutuhan_selanjutnya }}
+                           <ul>
+                                <?php    $skr = DB::table('servis_berikutnya as a')->leftjoin('barang as b','a.id_barang','b.id')->where('id_servis',$r->id)->get();   ?>
+                            <?php foreach ($skr as $b): ?>
+                                <li>{{ $b->nama }}</li> 
+                            <?php endforeach ?>
+                              <?php    $skr = DB::table('servis_sekarang as a')->leftjoin('barang as b','a.id_barang','b.id')->where('id_servis',$r->id)->get();   ?>
+                            <?php foreach ($skr as $b):
+                                $diff  = date_diff( date_create(), date_create(date('Y-m-d', strtotime('+'.$b->bulan.' month', strtotime(date('Y-m-d'))))) );
+                                $bulan= $diff->format('  %m bulan lagi');
+                             ?>
+                                <li>{{ $b->nama }}    | <span style="color: red">{{ number_format($r->kilometer+$b->kilometer,0) }} KM</span>   </li>
+                            <?php endforeach ?>
+                            </ul>
                         </td>
                         <td><a href="{{route('servis.foto',$r->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>

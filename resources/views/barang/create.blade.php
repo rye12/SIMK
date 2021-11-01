@@ -9,10 +9,7 @@
     </select>
   </div>
 
-  <!-- <div class="form-group">
-    <label for="exampleFormControlInput1">Kategori</label>
-    <input name="kode" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan kode barang" >
-  </div> -->
+   
   <div class="form-group">
     <label for="exampleFormControlInput1">Kode</label>
     <input name="kode" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
@@ -20,6 +17,25 @@
   <div class="form-group">
     <label for="exampleFormControlInput1">Nama</label>
     <input name="nama" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Jangka Waktu Pemakaian (optional)</label>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Bulan</label>
+          <input name="bulan" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan bulan" autocomplete="off">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Kilometer</label>
+          <input name="kilometer" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan kilometer" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="form-group">
