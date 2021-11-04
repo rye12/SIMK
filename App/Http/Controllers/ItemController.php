@@ -19,7 +19,7 @@ class ItemController extends Controller
             ->leftjoin('pegawai as b', 'b.id', 'a.id_pegawai')
             ->leftjoin('barang_kategori as c', 'c.id', 'a.id_barang')
             ->leftjoin('verifikasi_item as d', 'd.id', 'a.verifikasi')
-            ->select('a.*', 'b.nama as nama', 'c.nama as barang', 'd.nama as verifikasi')
+            ->select('a.*', 'b.nama as nama', 'b.nip as nip', 'c.nama as barang', 'd.nama as verifikasi')
             ->get();
         return view('item.index', compact('data'));
     }

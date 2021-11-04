@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Hash;
 use Auth;
+use App\Models\User;
 
 class PegawaiController extends Controller
 {
@@ -216,6 +217,18 @@ class PegawaiController extends Controller
         ];
         $pegawai['password'] = bcrypt($request->password);
         DB::table('pegawai')->insert($pegawai);
+        $user = DB::table('pegawai')->where('nip', $request->nip)->first();
+
+        $data = [
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'name' => $request->nama,
+            'email' => $request->email,
+            'id_pegawai' => $user->id
+
+        ];
+
+        User::create($data);
         return redirect()->back()->with('success', 'Post updated successfully');
     }
 }

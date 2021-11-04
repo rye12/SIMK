@@ -40,6 +40,10 @@ class GudangController extends Controller
         return view('gudang.masuk-data',compact('data','barang'));
     }
     public function barangMasukSimpan(Request $request){
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = $request->barang;
 
         if (!empty($barang)) {
@@ -76,6 +80,10 @@ class GudangController extends Controller
         return view('gudang.keluar-data',compact('data','barang','kendaraan'));
     }
     public function barangKeluarSimpan(Request $request){
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
         $barang = $request->barang;
 
         if (!empty($barang)) {

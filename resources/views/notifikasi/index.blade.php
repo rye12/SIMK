@@ -29,15 +29,20 @@ use Carbon\Carbon;
                     $time = Carbon::parse($current)->diffForHumans();
                     $di = $current->diffInDays(Carbon::now('Asia/Jakarta'))
                     ?>
-                    @if($di <= 30)
-                        <div class="alert alert-info">
-                            {{ $no++ }}. {{ $d->keterangan}} 
-                            <div class="text-muted" style="margin-left: 12px">
-                                {{ $time }}
-                            </div>
-                        </div> 
-                    @endif 
+                    @if(Auth::user()->id_pegawai == $d->id_pegawai)
+                        @if($di <= 30)
+                            <div class="alert alert-info">
+                                {{ $no++ }}. {{ $d->keterangan}} 
+                                <div class="text-muted" style="margin-left: 1px">
+                                    Posted: {{ $time }}
+                                </div>
+                            </div> 
+                        @endif 
+                    @endif
                     @endforeach
+                    @if($no == 1)
+                        <h6 class="text-center">Tidak ada notifikasi</h6>
+                    @endif
                 </table>
             </div>
 
