@@ -16,13 +16,17 @@
 
 	<!-- Sidebar content -->
 	<div class="sidebar-content">
-
+		<?php
+		$user = DB::table('pegawai')->where('id', Auth::user()->id_pegawai)->get();
+		?>
 		<!-- User menu -->
 		<div class="sidebar-user">
 			<div class="card-body">
 				<div class="media">
 					<div class="mr-3">
-						<a href="#"><img src="{{url('global_assets/images/placeholders/placeholder.jpg')}}" width="38" height="38" class="rounded-circle" alt=""></a>
+						@foreach($user as $u)
+						<a href="#"><img src="{{url('files/pegawai/'.$u->foto)}}" width="38" height="38" class="rounded-circle" alt=""></a>
+						@endforeach
 					</div>
 
 					<div class="media-body">

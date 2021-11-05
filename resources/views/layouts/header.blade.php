@@ -28,21 +28,16 @@
 
 		<ul class="navbar-nav">
 
-
-
 			<li class="nav-item dropdown dropdown-user">
 				<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-					<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
 					<span style="text-transform: capitalize;">{{Auth::user()->name}}</span>
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right">
-					<!-- <a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
-					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a> -->
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button type="submit" class="dropdown-item"><i class="icon-switch2"></i>Logout</button>
+						<button type="submit" class="dropdown-item" onclick="return confirm('Ada Akan Logout dari Halaman Ini? Lanjutkan?')">
+						<i class="icon-switch2"></i>Logout</button>
 					</form>
 				</div>
 			</li>
