@@ -108,6 +108,8 @@ Route::DELETE('/bbm/{id}', 'App\Http\Controllers\BBMController@destroy');
 //pengajuan barang
 Route::resource('item', ItemController::class);
 Route::DELETE('/item/{id}', 'App\Http\Controllers\ItemController@destroy');
+Route::get('item/lihat/{id}', 'App\Http\Controllers\ItemController@lihat')->name('item.foto');
+Route::post('item/fotoupload/{id}', 'App\Http\Controllers\ItemController@fotoupload')->name('item.foto.upload');
 
 //gudang
 Route::get('gudang/stok', 'App\Http\Controllers\GudangController@stok')->name('gudang.stok');
