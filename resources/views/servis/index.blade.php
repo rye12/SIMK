@@ -17,7 +17,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Jenis Kendaraan</th>
-                            <th>Pegawai</th>
+                            <th>Jarak Tempuh</th>
                             <th>Servis Sekarang</th>
                             <th>Servis Berikutnya</th>
                             <th>Foto</th>
@@ -38,7 +38,7 @@
                             {{ $r->kendaraan }}
                         </td>
                         <td>
-                            {{ $r->pemilik }}
+                            {{ number_format($r->kilometer,0) }} KM
                         </td>
                         <td>
                             <ul>
