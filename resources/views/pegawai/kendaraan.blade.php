@@ -8,9 +8,14 @@
 
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h3 class="card-title"><a href="{{ route('pegawai.index') }}" class="btn btn-sm btn-warning "><i class="icon"></i> kembali</a> | Data Kendaraan</h3>
-                <a href="{{ route('pegawai.kendaraan.tambah',$id) }}" class="btn btn-sm btn-success modal-show">Tambah Kendaraan</a>
+                <?php
+                $nama2 = DB::table('pegawai')->where('id',$id)->get();
 
+                ?>
+                @foreach($nama2 as $n)
+                <h3 class="card-title"><a href="{{ route('pegawai.index') }}" class="btn btn-sm btn-warning "><i class="icon"></i> kembali</a> | Data Kendaraan | {{ $n->nama}}</h3>
+                <a href="{{ route('pegawai.kendaraan.tambah',$id) }}" class="btn btn-sm btn-success modal-show">Tambah Kendaraan</a>
+                @endforeach
             </div>
             <div class="card-body py-0">
                 <table id="myTable" class='table'>
