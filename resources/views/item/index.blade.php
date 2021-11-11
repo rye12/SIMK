@@ -44,10 +44,10 @@
                         <td>
                             {{ $d->keterangan }}
                         </td>
+                        <td><a href="{{route('item.foto',$d->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td>
                             {{ $d->verifikasi }}
                         </td>
-                        <td><a href="{{route('item.foto',$d->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('item.edit',$d->id)  }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
