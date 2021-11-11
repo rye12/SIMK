@@ -33,11 +33,62 @@
     </select>
 
   </div>
+  
+  <div>
+    <label>Tambahkan Plat Untuk Perpanjangan Pajak 5 Tahun</label>
+  </div>
+  <div id="create-ticket-buttons" class="form-group">
+    <button class='create-ticket btn btn-success'>Tambah Plat Nomor</button>
+  </div>
+  <div id='tickets' class="form-group" style="margin-bottom: 15px">
 
+  </div>
+  
   <div class="form-group">
     <label for="exampleFormControlInput1">Nominal</label>
-    <input name="nominal" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan deskripsi barang" required>
+    <input name="nominal" type="jenis" class="form-control" id="nominal" placeholder="Masukkan nominal pajak" required>
   </div>
+
+
+<script>
+function createTicketComponent(type) {
+  type = type || null;
+
+  var elements    = [],
+      rootElement = document.createElement('div'),
+      price       = type === 'FREE' ? 0 : '';
+
+  elements.push('<input type="text" name="plat_baru" class="form-control" placeholder="Masukkan Plat Nomor Baru" />');
+	
+  rootElement.innerHTML = elements.join('');
+  
+  return rootElement;
+}
+
+
+function createFreeTicketComponent() {
+  return createTicketComponent('FREE');
+}
+
+
+function onClickCreateTicketButton(event) {
+  var button    = event.target,
+      container = document.querySelector('#tickets'),
+      component;
+
+  if(button.classList.contains('free')) {
+    component = createFreeTicketComponent();
+  } else {
+    component = createTicketComponent();
+  }
+
+  container.appendChild(component);
+}
+
+
+var buttonsGroup = document.getElementById('create-ticket-buttons');
+buttonsGroup.addEventListener('click', onClickCreateTicketButton);
+</script>
 
 
   <button type="submit" class="btn btn-primary">Submit</button>
