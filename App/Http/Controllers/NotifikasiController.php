@@ -17,7 +17,8 @@ class NotifikasiController extends Controller
         if(Auth::user()->level == 'admin'){
             $data = DB::table('notifikasi as a')
                 ->leftjoin('pegawai as p', 'p.id', '=', 'a.id_pegawai')
-                ->select('a.*', 'p.nama as nama','p.nip as nip')
+                ->leftjoin('kendaraan as k', 'k.id', '=', 'a.id_kendaraan')
+                ->select('a.*', 'p.nama as nama','p.nip as nip', 'k.nama as kendaraan')
                 ->get();
 
             return view('notifikasi.indexAdmin', compact('data'));
@@ -34,7 +35,8 @@ class NotifikasiController extends Controller
             exit();
         }
         $pegawai = DB::table('pegawai')->get();
-        return view('notifikasi.create', compact('pegawai'));
+        $kendaraan = DB::table('kendaraan')->get();
+        return view('notifikasi.create', compact('pegawai','kendaraan'));
     }
 
     public function store(Request $request)
@@ -45,6 +47,7 @@ class NotifikasiController extends Controller
         }
         $notif = [
             'id_pegawai' => $request->id_pegawai,
+            'id_kendaraan' => $request->id_kendaraan,
             'keterangan' => $request->keterangan,
         ];
         DB::table('notifikasi')->insert($notif);
@@ -65,7 +68,8 @@ class NotifikasiController extends Controller
         }
         $notif = DB::table('notifikasi')->where('id', $id)->first();
         $pegawai = DB::table('pegawai')->get();
-        return view('notifikasi.edit', compact('notif', 'pegawai'));
+        $kendaraan = DB::table('kendaraan')->get();
+        return view('notifikasi.edit', compact('notif', 'pegawai','kendaraan'));
     }
 
 
@@ -77,6 +81,7 @@ class NotifikasiController extends Controller
         }
         $notif = [
             'id_pegawai' => $request->id_pegawai,
+            'id_kendaraan' => $request->id_kendaraan,
             'keterangan' => $request->keterangan,
         ];
         DB::table('notifikasi')->where('id', $id)->update($notif);
