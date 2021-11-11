@@ -60,6 +60,7 @@ class PajakController extends Controller
         }
 
         $kendaraan = DB::table('kendaraan_pegawai')->where('id_kendaraan', $request->id_kendaraan)->first();
+        $jenisPajak = $request->id_jenis;
         $pajak = [
             'id_pegawai' => $kendaraan->id_pegawai,
             'id_kendaraan' => $kendaraan->id_kendaraan,
@@ -67,8 +68,17 @@ class PajakController extends Controller
             'nominal' => $request->nominal,
             'id_verifikasi' => '1'
         ];
-
         DB::table('pajak')->insert($pajak);
+
+        if($request->id_jenis == 2){
+            $kend = DB::table('kendaraan')->where('id', $request->id_kendaraan)->first();
+            $hist = [
+                'id_kendaraan' => $kendaraan->id_kendaraan,
+                'plat_lama' => $kend->no_plat,
+            ];
+            DB::table('history_plat')->insert($hist);
+        }
+
         return redirect()->route('pajak.index')->with('success', 'Post updated successfully');
     }
 
@@ -168,5 +178,11 @@ class PajakController extends Controller
         $file->move($tujuan_upload, $nama);
         DB::table('pajak_foto')->insert(['file' => $nama, 'id_pajak' => $id, 'deskripsi' => $request->deskripsi]);
         return back();
+    }
+
+    public function updateSelesai($id)
+    {
+        DB::table('pajak')->where('id', $id)->update(['id_verifikasi' => '7']);
+        return redirect()->route('pajak.index')->with('success', 'Post updated successfully');
     }
 }
