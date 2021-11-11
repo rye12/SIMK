@@ -24,9 +24,14 @@
 			<div class="card-body">
 				<div class="media">
 					<div class="mr-3">
-						@foreach($user as $u)
-						<a href="#"><img src="{{url('files/pegawai/'.$u->foto)}}" width="38" height="38" class="rounded-circle" alt=""></a>
-						@endforeach
+						@if(Auth::user()->level == 'admin')
+							<a href="#"><img src="{{url('global_assets/images/placeholders/placeholder.jpg')}}" width="38" height="38" class="rounded-circle" alt=""></a>
+						@else
+							@foreach($user as $u)
+							<a href="#"><img src="{{url('files/pegawai/'.$u->foto)}}" width="38" height="38" class="rounded-circle" alt=""></a>
+							@endforeach
+						@endif
+						
 					</div>
 
 					<div class="media-body">
@@ -59,6 +64,7 @@
 						</span>
 					</a>
 				</li>
+				@if(Auth::user()->level == 'admin')
 				<li class="nav-item">
 					<a href="{{ route('pegawai.index') }}" class="nav-link">
 						<i class="icon-user"></i>
@@ -72,6 +78,7 @@
 						<i class="icon-users"></i>
 						<span>User</span></a>
 				</li>
+				@endif
 				<li class="nav-item">
 					<a href="{{ route('kendaraan.index') }}" class="nav-link">
 						<i class="icon-car"></i>
@@ -83,6 +90,7 @@
 						<i class="icon-wrench"></i>
 						<span>Servis</span></a>
 				</li>
+				@if(Auth::user()->level == 'admin')
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-box"></i> <span>Gudang</span></a>
 
@@ -111,6 +119,7 @@
 					</ul>
 
 				</li>
+				@endif
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-file-text2"></i> <span>Pengajuan</span></a>
 
