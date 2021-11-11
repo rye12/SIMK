@@ -86,15 +86,19 @@ class ServisController extends Controller
         }
         $sekarang = DB::table('barang_kategori')->where('id', $request->kebutuhan_sekarang)->first();
         $selanjutnya = DB::table('barang_kategori')->where('id', $request->kebutuhan_selanjutnya)->first();
-        $servis = DB::table('servis')->where('id',$id)->update([
+        $nama = [
+            'nama'=> $request->nama
+        ];
+        $servis = [
             'id_kendaraan' => $request->id_kendaraan,
             'id_pegawai' => $request->id_pegawai,
             'kebutuhan_sekarang' => $sekarang->nama,
             'kebutuhan_selanjutnya' => $selanjutnya->nama,
             'tanggal' => $request->tanggal,
-            'keterangan' => $request->keterangan,
-        ]);
-        return redirect()->route('servis.index')->with('success', 'Post update successfully');
+            'keterangan' => $request->keterangan
+        ];
+        DB::table('servis')->update($servis);
+        return redirect()->back()->with('success', 'Post updated successfully');
     }
 
     public function destroy(Servis $servis, $id)
