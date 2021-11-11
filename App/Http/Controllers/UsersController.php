@@ -39,6 +39,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
+            'level' => 'required'
         ]);
 
         $data['password'] = bcrypt($request->password);

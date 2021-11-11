@@ -120,6 +120,10 @@
 
 				</li>
 				@endif
+
+				<?php $pegawai = DB::table('pegawai')->where('id', Auth::user()->id_pegawai)->get();
+				
+				?>
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-file-text2"></i> <span>Pengajuan</span></a>
 
@@ -135,12 +139,21 @@
 								<i class="icon-coins"></i> <span>Pengajuan Pajak</span></a></a>
 						</li>
 					</ul>
+
+					@if(Auth::user()->level == 'admin')
+					
+					@foreach ($pegawai as $p)
+					@if($p->id_jabatan == 1 || $p->id_jabatan == 2)
 					<ul class="nav nav-group-sub">
 						<li class="nav-item">
 							<a href="{{ route('bbm.index')}}" class="nav-link">
 								<i class="icon-gas"></i> <span>Pengajuan BBM</span></a></a>
 						</li>
 					</ul>
+					@endif
+					@endforeach
+					
+					
 				</li>
 				<li class="nav-item">
 					<a href="{{ route('notifikasi.index') }}" class="nav-link">
