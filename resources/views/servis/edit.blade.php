@@ -6,14 +6,14 @@
    <select class="form-control" name="id_kendaraan">
       <option value=""></option>
       <?php
-         $pegawai = DB::table('kendaraan')->get();
-         foreach ($pegawai as $p) {
+         $kendaraan = DB::table('kendaraan')->get();
+         foreach ($kendaraan as $p) {
          
          ?>
-      <option value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
-      <?php
-         }
-         ?>
+         <option {{$p->id==$servis->id_kendaraan?'selected':''}} value="{{$p->id}}">{{$p->no_plat}} - {{$p->nama}}</option>
+            <?php
+            }
+            ?>
    </select>
 </div>
 <div class="form-group">
@@ -22,7 +22,7 @@
 </div>
 <div class="form-group">
    <label for="exampleFormControlInput1">Kilometer Sekarang</label>
-   <input name="kilometer" type="number" class="form-control"   id="exampleFormControlInput1"  autocomplete="off" >
+   <input name="kilometer" type="number" class="form-control"  value="{{$servis->kilometer}}" id="exampleFormControlInput1"  autocomplete="off" >
 </div>
 <div class="form-group row">
 <div class="col-md-6">   
@@ -108,7 +108,7 @@
  
 <div class="form-group">
    <label for="exampleFormControlInput1">Keterangan</label>
-   <textarea class="form-control" name="keterangan"></textarea>
+   <textarea class="form-control" value="{{$servis->keterangan}}" name="keterangan"></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 <script type="text/javascript">

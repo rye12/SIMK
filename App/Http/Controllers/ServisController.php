@@ -77,10 +77,12 @@ class ServisController extends Controller
             return view('auth.login');
             exit();
         }
-        $barang = DB::table('barang_kategori')->get();
+        $barang = DB::table('barang')->get();
         $servis = DB::table("servis")->where('id',$id)->first();
+        $now = DB::table('servis_sekarang')->first();
+        $next = DB::table('servis_berikutnya')->get();
         $nama = DB::table("users")->get();
-        return view('servis.edit', compact('servis','nama','barang'));
+        return view('servis.edit', compact('servis','nama','barang', 'now', 'next'));
     }
 
     /**
