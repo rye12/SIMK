@@ -18,7 +18,7 @@ class ServisController extends Controller
         $data = DB::table('servis as s')
         ->leftjoin('pegawai as p', 's.id_pegawai', 'p.id')
         ->leftjoin('kendaraan as k', 's.id_kendaraan', 'k.id')
-        ->select("s.*","p.nip as nip_pegawai","k.nama as kendaraan","p.nama as pemilik")
+        ->select("s.*","k.nama as kendaraan","p.nama as pemilik")
         ->get();
         
 
@@ -31,20 +31,33 @@ class ServisController extends Controller
             return view('auth.login');
             exit();
         }
-        $sekarang = DB::table('barang_kategori')->where('id', $request->servis_sekarang)->first();
-        $selanjutnya = DB::table('barang_kategori')->where('id', $request->servis_berikutnya)->first();
+        // $sekarang = DB::table('barang_kategori')->where('id', $request->servis_sekarang)->first();
+        // $selanjutnya = DB::table('barang_kategori')->where('id', $request->servis_berikutnya)->first();
         $nama = [
             'nama'=> $request->nama
         ];
+        $pegawai = DB::table('kendaraan_pegawai')->where('id_kendaraan', $request->id_kendaraan)->first();
         $servis = [
             'id_kendaraan' => $request->id_kendaraan,
-            'id_pegawai' => $request->id_pegawai,
-            'kebutuhan_sekarang' => $sekarang->nama,
-            'kebutuhan_selanjutnya' => $selanjutnya->nama,
+            'id_pegawai' => $pegawai->id_pegawai,
+            'kebutuhan_sekarang' => $request->servis_sekarang,
+            'kebutuhan_selanjutnya' => $request->servis_berikutnya,
             'tanggal' => $request->tanggal,
-            'keterangan' => $request->keterangan
+            'keterangan' => $request->keterangan,
+            'kilometer' => $request->kilometer
         ];
         DB::table('servis')->insert($servis);
+        $id_now = DB::table('servis')->latest('id')->first();
+        $now = [
+            'id_barang' => $request->servis_sekarang,
+            'id_servis' => $id_now->id
+        ];
+        DB::table('servis_sekarang')->insert($now);
+        $next = [
+            'id_barang' => $request->servis_berikutnya,
+            'id_servis' => $id_now->id
+        ];
+        DB::table('servis_berikutnya')->insert($next);
         return redirect()->back()->with('success', 'Post updated successfully');
     }
 
@@ -54,7 +67,7 @@ class ServisController extends Controller
             return view('auth.login');
             exit();
         }
-        $barang = DB::table('barang_kategori')->get();
+        $barang = DB::table('barang')->get();
         return view('servis.create', compact('barang'));
     }
 

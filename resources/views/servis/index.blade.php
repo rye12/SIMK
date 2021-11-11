@@ -52,7 +52,7 @@
                            <ul>
                                 <?php    $skr = DB::table('servis_berikutnya as a')->leftjoin('barang as b','a.id_barang','b.id')->where('id_servis',$r->id)->get();   ?>
                             <?php foreach ($skr as $b): ?>
-                                <li>{{ $b->nama }}</li> 
+                                <li>{{ $b->nama }} | <span style="color: red">{{ number_format($r->kilometer+$b->kilometer,0) }} KM</span> </li> 
                             <?php endforeach ?>
                               <?php    $skr = DB::table('servis_sekarang as a')->leftjoin('barang as b','a.id_barang','b.id')->where('id_servis',$r->id)->get();   ?>
                             <?php foreach ($skr as $b):

@@ -43,7 +43,7 @@
                      <div class="row">
                         <div class="col-md-10">
                            <div class="form-group">
-                              <select class="form-control" id="position-option" data-name="servis_sekarang">
+                              <select class="form-control" id="position-option" name="servis_sekarang">
                                 <option></option>
                                  @foreach ($barang as $kategori)
                                  <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
@@ -82,7 +82,7 @@
                      <div class="row">
                         <div class="col-md-10">
                            <div class="form-group">
-                              <select class="form-control" id="position-option"   data-name="servis_berikutnya">
+                              <select class="form-control" id="position-option"   name="servis_berikutnya">
                                 <option></option>  
 
                                  @foreach ($barang as $kategori)
