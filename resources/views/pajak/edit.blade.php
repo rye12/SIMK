@@ -35,7 +35,7 @@
 
     <div class="form-group">
         <label for="position-option">Status</label>
-        <select class="form-control" id="position-option" name="id_verifikasi">
+        <select class="form-control" id="position-option" name="id_verifikasi" disabled>
             @foreach ($verifikasi as $v)
             <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
             @endforeach
