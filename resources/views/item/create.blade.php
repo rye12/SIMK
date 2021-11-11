@@ -2,7 +2,7 @@
   @csrf
   <div class="form-group">
     <label for="exampleFormControlInput1">Nama Pegawai</label>
-    <select class="form-control" name="id_pegawai">
+    <select class="form-control" name="id_pegawai" required>
       <option value="">---- Pilih NIP - Nama ----</option>
       <?php
       foreach ($pegawai as $p) {
@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Barang</label>
-    <select class="custom-select" name="id_barang">
+    <select class="custom-select" name="id_barang" required>
       <option selected>---- Pilih Barang ----</option>
       @foreach ($barang as $b)
       <option value="{{$b->id}}">{{$b->nama}}</option>
@@ -24,7 +24,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Keterangan Barang</label>
-    <input name="keterangan" type="text" class="form-control" autocomplete="off">
+    <input name="keterangan" type="text" class="form-control" autocomplete="off" required>
   </div>
   <button type="submit" class="btn btn-primary">
     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Pengajuan</button>

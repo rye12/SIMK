@@ -17,11 +17,11 @@
 </div>
 <div class="form-group">
    <label for="exampleFormControlInput1">Tanggal</label>
-   <input name="tanggal" type="date" class="form-control" value="{{ date('Y-m-d') }}" id="exampleFormControlInput1" placeholder="Contoh : 2021-1-21" autocomplete="off" >
+   <input name="tanggal" type="date" class="form-control" value="{{ date('Y-m-d') }}" id="exampleFormControlInput1" placeholder="Contoh : 2021-1-21" autocomplete="off" required>
 </div>
 <div class="form-group">
    <label for="exampleFormControlInput1">Kilometer Sekarang</label>
-   <input name="kilometer" type="number" class="form-control"   id="exampleFormControlInput1"  autocomplete="off" >
+   <input name="kilometer" type="number" class="form-control"   id="exampleFormControlInput1"  autocomplete="off" required>
 </div>
 <div class="form-group row">
 <div class="col-md-6">   
@@ -107,7 +107,7 @@
  
 <div class="form-group">
    <label for="exampleFormControlInput1">Keterangan</label>
-   <textarea class="form-control" name="keterangan"></textarea>
+   <textarea class="form-control" name="keterangan" required></textarea>
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 <script type="text/javascript">

@@ -12,11 +12,11 @@
    
   <div class="form-group">
     <label for="exampleFormControlInput1">Kode</label>
-    <input name="kode" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
+    <input name="kode" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Nama</label>
-    <input name="nama" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off">
+    <input name="nama" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama barang" autocomplete="off" required>
   </div>
 
   <div class="form-group">
@@ -40,7 +40,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Deskripsi</label>
-    <input name="deskripsi" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan deskripsi barang">
+    <input name="deskripsi" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan deskripsi barang" required>
   </div>
 
 
