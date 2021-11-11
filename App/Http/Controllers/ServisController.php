@@ -31,8 +31,8 @@ class ServisController extends Controller
             return view('auth.login');
             exit();
         }
-        $sekarang = DB::table('barang_kategori')->where('id', $request->kebutuhan_sekarang)->first();
-        $selanjutnya = DB::table('barang_kategori')->where('id', $request->kebutuhan_selanjutnya)->first();
+        $sekarang = DB::table('barang_kategori')->where('id', $request->servis_sekarang)->first();
+        $selanjutnya = DB::table('barang_kategori')->where('id', $request->servis_berikutnya)->first();
         $nama = [
             'nama'=> $request->nama
         ];
