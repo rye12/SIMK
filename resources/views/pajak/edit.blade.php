@@ -33,22 +33,17 @@
         <input name="nominal" type="text" class="form-control" id="formGroupExampleInput" value="{{ $pajak->nominal }}" autocomplete="off">
     </div>
 
+    @if(Auth::user()->level === 'admin')
     <div class="form-group">
         <label for="position-option">Status</label>
-        @if(Auth::user()->level === 'admin')
             <select class="form-control" id="position-option" name="id_verifikasi">
                 @foreach ($verifikasi as $v)
-                <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
+                    @if($v->id != 7)
+                        <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
+                    @endif
                 @endforeach
             </select>
-        @else
-            <select class="form-control" id="position-option" name="id_verifikasi" disabled>
-                @foreach ($verifikasi as $v)
-                <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
-                @endforeach
-            </select>
-
-        @endif
+    @endif
     </div>
 
 

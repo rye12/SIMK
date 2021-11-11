@@ -55,6 +55,7 @@
                         <td>
                             <a href="{{ route('pajak.foto',$r->id) }}" class="btn btn-primary btn-sm modal-show">Lihat</a>
                         </td>
+                
                         <td class="d-flex flex-row">
                             <a href="{{ route('pajak.edit',$r->id) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
@@ -62,10 +63,21 @@
                             <form action="{{ route('pajak.destroy', $r->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('apakah anda ingin menghapus?')">
+                                <button type="submit" class="btn btn-danger btn-sm ml-2" onclick="return confirm('Apakah Anda Ingin Menghapus?')">
                                     <i class="icon-bin"></i>
                                 </button>
                             </form>
+
+                            @if(Auth::user()->level == 'user')
+                            <form action="{{ route('pajak.updateSelesai', $r->id) }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="btn btn-success btn-sm ml-2" onclick="return confirm('Apakah Anda Yakin Menandai Ini Selesai?')">
+                                    <i class="icon-checkmark4"></i>
+                                </button>
+                            </form>
+                    
+                            @endif
                         </td>
 
                     </tr>

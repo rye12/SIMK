@@ -94,6 +94,7 @@ Route::DELETE('/servis/{id}', 'App\Http\Controllers\ServisController@destroy');
 //pajak
 Route::resource('pajak', PajakController::class);
 Route::resource('pajak', 'App\Http\Controllers\PajakController');
+Route::post('/pajak/selesai/{id}', 'App\Http\Controllers\PajakController@updateSelesai')->name('pajak.updateSelesai');
 Route::DELETE('/pajak/{id}', 'App\Http\Controllers\PajakController@destroy');
 Route::get('pajak/lihat/{id}', 'App\Http\Controllers\PajakController@lihat')->name('pajak.foto');
 Route::post('pajak/fotoupload/{id}', 'App\Http\Controllers\PajakController@fotoupload')->name('pajak.foto.upload');
