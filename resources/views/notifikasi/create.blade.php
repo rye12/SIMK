@@ -3,10 +3,20 @@
     <div class="form-group">
         <label>Nama</label>
 
-        <select class="form-control" name="id_pegawai">
+        <select class="form-control" name="id_pegawai" required>
             <option value=""></option>
             @foreach ($pegawai as $p)
             <option value="{{$p->id}}">{{$p->nip}} - {{$p->nama}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Kendaraan</label>
+
+        <select class="form-control" name="id_kendaraan" required>
+            <option value=""></option>
+            @foreach ($kendaraan as $k)
+            <option value="{{$k->id}}">{{$k->nama}}</option>
             @endforeach
         </select>
     </div>

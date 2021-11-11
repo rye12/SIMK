@@ -35,11 +35,20 @@
 
     <div class="form-group">
         <label for="position-option">Status</label>
-        <select class="form-control" id="position-option" name="id_verifikasi">
-            @foreach ($verifikasi as $v)
-            <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
-            @endforeach
-        </select>
+        @if(Auth::user()->level === 'admin')
+            <select class="form-control" id="position-option" name="id_verifikasi">
+                @foreach ($verifikasi as $v)
+                <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
+                @endforeach
+            </select>
+        @else
+            <select class="form-control" id="position-option" name="id_verifikasi" disabled>
+                @foreach ($verifikasi as $v)
+                <option {{($v->id==$pajak->id_verifikasi?"selected":"")}} value="{{$v->id}}">{{$v->nama}}</option>
+                @endforeach
+            </select>
+
+        @endif
     </div>
 
 

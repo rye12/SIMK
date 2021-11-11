@@ -60,12 +60,12 @@
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Jumlah Liter</label>
-    <input name="jumlah_liter" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan jumlah liter yang telah diisikan" autocomplete="off">
+    <input name="jumlah_liter" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan jumlah liter yang telah diisikan" autocomplete="off" required>
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Nominal</label>
-    <input name="nominal" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nominal pengisian bbm" autocomplete="off" >
+    <input name="nominal" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nominal pengisian bbm" autocomplete="off" required>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

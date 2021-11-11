@@ -4,8 +4,8 @@
   <div class="form-group">
     <label for="exampleFormControlInput1">Kendaraan</label>
 
-    <select class="form-control" name="id_kendaraan">
-      <option value=""></option>
+    <select class="form-control" name="id_kendaraan" required>
+      <option value="" ></option>
       <?php
       $pegawai = DB::table('kendaraan')->get();
       foreach ($pegawai as $p) {
@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Jenis Pajak</label>
-    <select class="form-control" name="id_jenis">
+    <select class="form-control" name="id_jenis" required>
       <option value=""></option>
       <?php
       $pegawai = DB::table('pajak_jenis')->get();
@@ -36,7 +36,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Nominal</label>
-    <input name="nominal" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan deskripsi barang">
+    <input name="nominal" type="jenis" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan deskripsi barang" required>
   </div>
 
 
