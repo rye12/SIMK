@@ -45,6 +45,7 @@ class KendaraanController extends Controller
             'id_jenis' => 'required',
             'no_rangka' => 'required',
             'no_plat' => 'required',
+            'tanggal_plat' => 'required',
             'no_mesin' => 'required',
             'warna' => 'required',
 
@@ -54,6 +55,7 @@ class KendaraanController extends Controller
             'id_jenis' => $request->id_jenis,
             'no_rangka' => $request->no_rangka,
             'no_plat' => $request->no_plat,
+            'tanggal_plat' => $request->tanggal_plat,
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
         ];
@@ -94,6 +96,7 @@ class KendaraanController extends Controller
             'id_jenis' => $request->id_jenis,
             'no_rangka' => $request->no_rangka,
             'no_plat' => $request->no_plat,
+            'tanggal_plat' => $request->tanggal_plat,
             'no_mesin' => $request->no_mesin,
             'warna' => $request->warna,
         ]);

@@ -23,18 +23,22 @@
             <label for="exampleFormControlInput1">No. Rangka</label>
             <input name="no_rangka" type="text" class="form-control" id="no_rangka" value="{{$kendaraan->no_rangka}}" autocomplete="off">
         </div>
-
-        <div class="form-group col-md-6">
-            <label for="exampleFormControlInput1">No. Plat</label>
-            <input name="no_plat" type="text" class="form-control" id="no_plat" value="{{$kendaraan->no_plat}}" autocomplete="off">
-        </div>
-    </div>
-    <div class="form-row">
         <div class="form-group col-md-6">
             <label for="exampleFormControlInput1">No. Mesin</label>
             <input name="no_mesin" type="text" class="form-control" id="no_mesin" value="{{$kendaraan->no_mesin}}" placeholder="Contoh: 2NRJHDH39874982VE" autocomplete="off">
         </div>
-        <div class="form-group col-md-6">
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="exampleFormControlInput1">No. Plat</label>
+            <input name="no_plat" type="text" class="form-control" id="no_plat" value="{{$kendaraan->no_plat}}" autocomplete="off">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="exampleFormControlInput1">Tanggal Plat</label>
+            <input name="tanggal_plat" type="date" class="form-control" id="tanggal_plat" value="{{$kendaraan->tanggal_plat}}" autocomplete="off">
+        </div>
+        <div class="form-group col-md-4">
             <label for="exampleFormControlInput1">Warna</label>
             <input name="warna" type="text" class="form-control" id="warna" value="{{$kendaraan->warna}}" autocomplete="off">
         </div>

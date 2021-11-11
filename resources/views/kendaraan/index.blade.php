@@ -23,7 +23,8 @@
                             <th>Model</th>
                             <th>Jenis</th>
                             <th>No. Rangka</th>
-                            <th>NO. Plat</th>
+                            <th>No. Plat</th>
+                            <th>Tanggal Plat</th>
                             <th>No. Mesin</th>
                             <th>Warna</th>
                             @if(Auth::user()->level == 'admin')
@@ -55,6 +56,9 @@
                         </td>
                         <td>
                             {{ $d->no_plat }}
+                        </td>
+                        <td>
+                            {{ $d->tanggal_plat }}
                         </td>
                         <td>
                             {{ $d->no_mesin }}
