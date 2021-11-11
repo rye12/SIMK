@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-header header-elements-inline">
                 <?php
-                $nama2 = DB::table('pegawai')->where('id',$id)->get();
+                $nama2 = DB::table('pegawai')->where('id', $id)->get();
 
                 ?>
                 @foreach($nama2 as $n)
@@ -61,6 +61,9 @@
                         <td class="d-flex flex-row">
                             <a href="{{ route('kendaraan.edit',$r->id_kendaraan_pegawai) }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
+                            </a>
+                            <a target = '_blank' href="{{ route('pegawai.kendaraan.exportWord',$r->id_kendaraan_pegawai) }}" class="btn btn-success btn-sm ml-2" onclick="return confirm('apakah anda ingin mendownload?')"> 
+                                <i class="icon-download"></i>
                             </a>
                             <form action="{{ route('pegawai.kendaraan.hapus', $r->id_kendaraan_pegawai) }}" method="POST">
                                 @csrf

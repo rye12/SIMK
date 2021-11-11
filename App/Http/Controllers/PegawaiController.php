@@ -8,6 +8,7 @@ use DB;
 use Hash;
 use Auth;
 use App\Models\User;
+use Exception;
 
 class PegawaiController extends Controller
 {
@@ -91,6 +92,32 @@ class PegawaiController extends Controller
             ->where('a.id_kendaraan', $id)
             ->get();
         return view('pegawai.kendaraan-servis', compact('data', 'id'));
+    }
+    public function exportWord($id)
+    {
+        $data = DB::table('pegawai as a')
+            ->leftjoin('kendaraan_pegawai as b', 'b.id_pegawai', '=', 'a.id')
+            ->where('b.id', $id)
+            ->select('a.nama as nama')
+            ->get();
+
+        $word = new \PhpOffice\PhpWord\PhpWord();
+
+        $section = $word->addSection();
+
+        foreach ($data as $d) {
+        $desc1 = "Nama : {$d->nama}"; }
+        $desc2 = "Kendaraan :";
+
+        $section->addText($desc1);
+        $section->addText($desc2);
+
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word, 'Word2007');
+        try {
+            $objectWriter->save(storage_path('formulirTTD.docx'));
+        } catch (Exception $e) {
+        }
+        return response()->download(storage_path('formulirTTD.docx'));
     }
 
     // public function servisTambah($id)
