@@ -100,4 +100,30 @@ class ItemController extends Controller
         return redirect()->route('item.index')
             ->with('success', 'Post deleted successfully');
     }
+
+    public function lihat($id)
+    {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
+        $foto = DB::table('pengajuan_barang_foto')->where('id_pengajuan_barang', $id)->get();
+        return view('item.foto', compact('id','foto'));
+    }
+
+    public function fotoupload(Request $request, $id)
+    {
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
+        $file = $request->file('foto');
+        $tujuan_upload = 'files/item/';
+
+        $nama = $file->getClientOriginalName();
+        $file->move($tujuan_upload, $nama);
+
+        DB::table('pengajuan_barang_foto')->insert(['file' => $nama, 'id_pengajuan_barang' => $id, 'deskripsi' => $request->deskripsi]);
+        return back();
+    }
 }
