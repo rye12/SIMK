@@ -10,6 +10,16 @@
             @endforeach
         </select>
     </div>
+    <div class="form-group">
+        <label>Kendaraan</label>
+
+        <select class="form-control" name="id_kendaraan" required>
+            <option value=""></option>
+            @foreach ($kendaraan as $k)
+            <option value="{{$k->id}}">{{$k->nama}}</option>
+            @endforeach
+        </select>
+    </div>
     <div class="mb-3">
         <label class="form-label">Keterangan</label>
         <textarea class="form-control" name="keterangan" rows="3" required></textarea>

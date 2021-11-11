@@ -25,6 +25,7 @@ use Carbon\Carbon;
                             <th>No.</th>
                             <th>Nama Pegawai</th>
                             <th>NIP</th>
+                            <th>Kendaraan</th>
                             <th>Keterangan</th>
                             <th>Aksi</th>
 
@@ -44,6 +45,9 @@ use Carbon\Carbon;
                         </td>
                         <td>
                             {{ $d->nip }}
+                        </td>
+                        <td>
+                            {{ $d->kendaraan }}
                         </td>
                         <td>
                             {{ $d->keterangan }}

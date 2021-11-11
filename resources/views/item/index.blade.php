@@ -21,6 +21,7 @@
                             <th>Pegawai</th>
                             <th>Barang</th>
                             <th>Keterangan</th>
+                            <th>Foto</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -46,6 +47,7 @@
                         <td>
                             {{ $d->verifikasi }}
                         </td>
+                        <td><a href="{{route('item.foto',$d->id)}}" class="btn btn-primary btn-sm modal-show">Lihat</a></td>
                         <td class="d-flex flex-row">
                             <a href="{{ route('item.edit',$d->id)  }}" class="btn btn-primary btn-sm modal-show">
                                 <i class="icon-pencil"></i>
