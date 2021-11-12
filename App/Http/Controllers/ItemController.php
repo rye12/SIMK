@@ -31,7 +31,7 @@ class ItemController extends Controller
             exit();
         }
         $pegawai = DB::table('pegawai')->get();
-        $barang = DB::table('barang_kategori')->get();
+        $barang = DB::table('barang')->get();
         return view('item.create', compact('pegawai', 'barang'));
     }
 
@@ -41,14 +41,21 @@ class ItemController extends Controller
             return view('auth.login');
             exit();
         }
-        $item = [
-            'id_pegawai' => $request->id_pegawai,
-            'id_barang' => $request->id_barang,
-            'keterangan' => $request->keterangan,
-            'verifikasi' => 1,
-        ];
-        DB::table('pengajuan_barang')->insert($item);
-        return redirect()->back()->with('success', 'Post updated successfully');
+        $status = DB::table('barang')->where('id', $request->id_barang)->first();
+        if($status->jenis_kendaraan == $request->id_jenis){
+            $item = [
+                'id_pegawai' => $request->id_pegawai,
+                'id_barang' => $request->id_barang,
+                'keterangan' => $request->keterangan,
+                'verifikasi' => 1,
+            ];
+            DB::table('pengajuan_barang')->insert($item);
+            return redirect()->back()->with('success', 'Post updated successfully');
+        }else{
+            return back()->withErrors(['error' => ['Barang tidak bisa digunakan di kendaraan ini']]);
+        }
+
+        
     }
 
     public function show($id)

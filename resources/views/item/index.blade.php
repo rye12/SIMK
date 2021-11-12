@@ -13,6 +13,11 @@
                     <i class="icon-plus-circle2" style="margin-right: 5px;"></i>Tambah Pengajuan</a>
 
             </div>
+            <div>
+                @if($errors->any())
+                <h6 class="alert alert-danger">{{$errors->first()}}</h6>
+                @endif
+            </div>
             <div class="card-body py-0">
                 <table id="myTable" class='table'>
                     <thead>
