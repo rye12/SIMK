@@ -48,6 +48,7 @@ class PegawaiController extends Controller
         $kendaraan = DB::table('kendaraan')->get();
         return view('pegawai.kendaraan-tambah', compact('id', 'kendaraan'));
     }
+
     public function kendaraanSimpan(Request $request)
     {
         if (Auth::user() == '') {
@@ -70,6 +71,7 @@ class PegawaiController extends Controller
         DB::table('kendaraan_pegawai')->where('id', $id)->delete();
         return back();
     }
+
     public function kendaraanStatus($id)
     {
         if (Auth::user() == '') {
@@ -80,6 +82,7 @@ class PegawaiController extends Controller
         $st = $check->status == 1 ? 0 : 1;
         DB::table('kendaraan_pegawai')->where('id', $id)->update(['status' => $st]);
     }
+
     public function kendaraanServis($id)
     {
         if (Auth::user() == '') {
@@ -93,10 +96,17 @@ class PegawaiController extends Controller
             ->get();
         return view('pegawai.kendaraan-servis', compact('data', 'id'));
     }
+
     public function exportWord($id)
     {
-        $data = DB::table('pegawai as a')
+        $nama = DB::table('pegawai as a')
             ->leftjoin('kendaraan_pegawai as b', 'b.id_pegawai', '=', 'a.id')
+            ->where('b.id', $id)
+            ->select('a.nama as nama')
+            ->get();
+
+        $kendaraan = DB::table('kendaraan as a')
+            ->leftjoin('kendaraan_pegawai as b', 'b.id_kendaraan', '=', 'a.id')
             ->where('b.id', $id)
             ->select('a.nama as nama')
             ->get();
@@ -105,9 +115,11 @@ class PegawaiController extends Controller
 
         $section = $word->addSection();
 
-        foreach ($data as $d) {
+        foreach ($nama as $d) {
         $desc1 = "Nama : {$d->nama}"; }
-        $desc2 = "Kendaraan :";
+        
+        foreach ($kendaraan as $k) {
+        $desc2 = "Kendaraan : {$k->nama}"; }
 
         $section->addText($desc1);
         $section->addText($desc2);
