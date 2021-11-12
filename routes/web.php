@@ -71,6 +71,7 @@ Route::post('/pegawai/kendaraan-simpan/{id}', 'App\Http\Controllers\PegawaiContr
 Route::DELETE('/pegawai/kendaraan-hapus/{id}', 'App\Http\Controllers\PegawaiController@kendaraanHapus')->name('pegawai.kendaraan.hapus');
 Route::get('/pegawai/kendaraan-servis/{id}', 'App\Http\Controllers\PegawaiController@kendaraanServis')->name('pegawai.kendaraan.servis');
 Route::post('/pegawai/kendaraan-status/{id}', 'App\Http\Controllers\PegawaiController@kendaraanStatus')->name('pegawai.kendaraan.status');
+Route::get('/pegawai/exportWord/{id}', 'App\Http\Controllers\PegawaiController@exportWord')->name('pegawai.kendaraan.exportWord');
 
 // Route::get('/pegawai/kendaraan-servis/{id}', 'App\Http\Controllers\PegawaiController@kendaraanServis')->name('pegawai.kendaraan.servis');
 // Route::get('/pegawai/kendaraan-servis-tambah/{id}', 'App\Http\Controllers\PegawaiController@servisTambah')->name('pegawai.kendaraan.servis.tambah');

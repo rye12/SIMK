@@ -81,7 +81,9 @@ class UsersController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'password' => $pass,
+            'level' => $request->level
         ];
+
         if ($request->password != null) {
             $data['password'] = bcrypt($request->password);
         }
