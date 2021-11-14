@@ -101,36 +101,90 @@ class PegawaiController extends Controller
     {
         $nama = DB::table('pegawai as a')
             ->leftjoin('kendaraan_pegawai as b', 'b.id_pegawai', '=', 'a.id')
+            ->leftjoin('jabatan as c', 'c.id', '=', 'a.id_jabatan')
             ->where('b.id', $id)
-            ->select('a.nama as nama')
+            ->select('a.*', 'c.nama as jabatan')
             ->get();
 
-        $kendaraan = DB::table('kendaraan as a')
-            ->leftjoin('kendaraan_pegawai as b', 'b.id_kendaraan', '=', 'a.id')
-            ->where('b.id', $id)
-            ->select('a.nama as nama')
+        $kendaraan = DB::table('kendaraan_pegawai as a')
+            ->leftjoin('kendaraan as b', 'b.id', '=', 'a.id_kendaraan')
+            ->leftjoin('kendaraan_jenis as c', 'c.id', '=', 'b.id_jenis')
+            ->where('a.id', $id)
+            ->select('b.nama as nama', 'c.id as id_jenis', 'b.no_plat as plat', 'b.no_mesin as mesin', 'b.no_rangka as rangka', 'b.nama as kendaraan')
             ->get();
 
-        $word = new \PhpOffice\PhpWord\PhpWord();
-
-        $section = $word->addSection();
-
-        foreach ($nama as $d) {
-        $desc1 = "Nama : {$d->nama}"; }
         
+        
+        $file = public_path('SuratPernyataan.docx');
+        $word = new \PhpOffice\PhpWord\TemplateProcessor($file);
+
+
+        foreach ($nama as $n) {
+        $word->setValue('nama', $n->nama);
+        $word->setValue('nip', $n->nip);
+        $word->setValue('jabatan', $n->jabatan);}
         foreach ($kendaraan as $k) {
-        $desc2 = "Kendaraan : {$k->nama}"; }
+         if($k->id_jenis == 1 )
+        $word->setValue('kendaraan', 'Motor');
+        else if ($k->id_jenis == 3)
+        $word->setValue('kendaraan', 'Mobil');
+        $word->setValue('jenis_kendaraan', $k->nama);
+        $word->setValue('plat_nomor', $k->plat); }
 
-        $section->addText($desc1);
-        $section->addText($desc2);
+        
 
-        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word, 'Word2007');
-        try {
-            $objectWriter->save(storage_path('formulirTTD.docx'));
-        } catch (Exception $e) {
-        }
-        return response()->download(storage_path('formulirTTD.docx'));
+        $word->saveAs('hasilPersyaratan.docx');
+       
+
+        $download = public_path('hasilPersyaratan.docx');
+        return response()->download($download);
+      
+
     }
+
+    public function exportWord2($id)
+    {
+        $nama = DB::table('pegawai as a')
+            ->leftjoin('kendaraan_pegawai as b', 'b.id_pegawai', '=', 'a.id')
+            ->leftjoin('jabatan as c', 'c.id', '=', 'a.id_jabatan')
+            ->where('b.id', $id)
+            ->select('a.*', 'c.nama as jabatan')
+            ->get();
+
+        $kendaraan = DB::table('kendaraan_pegawai as a')
+            ->leftjoin('kendaraan as b', 'b.id', '=', 'a.id_kendaraan')
+            ->leftjoin('kendaraan_jenis as c', 'c.id', '=', 'b.id_jenis')
+            ->where('a.id', $id)
+            ->select('b.nama as nama', 'c.id as id_jenis', 'b.no_plat as plat', 'b.no_mesin as mesin', 'b.no_rangka as rangka', 'b.nama as kendaraan')
+            ->get();
+
+        
+        
+      
+
+        $file2 = public_path('BeritaAcara.docx');
+        $word2 = new \PhpOffice\PhpWord\TemplateProcessor($file2);
+
+     
+        foreach ($nama as $n) {
+            $word2->setValue('nama', $n->nama);
+            $word2->setValue('nip', $n->nip);
+            $word2->setValue('jabatan', $n->jabatan);}
+            foreach ($kendaraan as $k) {
+            $word2->setValue('kendaraan', $k->kendaraan);
+            $word2->setValue('mesin', $k->mesin);
+            $word2->setValue('rangka', $k->rangka);
+            $word2->setValue('plat', $k->plat); }
+
+     
+        $word2->saveAs('hasilBeritaAcara.docx');
+
+     
+        $download2 = public_path('hasilBeritaAcara.docx');
+        return response()->download($download2);
+
+    }
+
 
     // public function servisTambah($id)
     // {
