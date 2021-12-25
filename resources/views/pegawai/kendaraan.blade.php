@@ -28,6 +28,7 @@
                             <th>Mesin</th>
                             <th>Status</th>
                             <th>Aksi</th>
+                            <th>Download</th>
                         </tr>
                     </thead>
                     <?php
@@ -76,6 +77,14 @@
                             </form>
                         </td>
 
+                        <td>
+                            <a target = '_blank' href="{{ route('pegawai.kendaraan.exportWord',$r->id_kendaraan_pegawai) }}"  onclick="return confirm('apakah anda ingin mendownload?')"> 
+                                <i class="icon-download">Surat Pernyataan</i>
+                            </a>
+                            <a target = '_blank' href="{{ route('pegawai.kendaraan.exportWord2',$r->id_kendaraan_pegawai) }}" onclick="return confirm('apakah anda ingin mendownload?')"> 
+                                <i class="icon-download">Berita Acara</i>
+                            </a>
+                        </td>
                     </tr>
 
                     @endforeach
