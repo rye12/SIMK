@@ -9,7 +9,6 @@ use Auth;
 
 class BarangController extends Controller
 {
-
     public function index()
     {
         if (Auth::user() == '') {
