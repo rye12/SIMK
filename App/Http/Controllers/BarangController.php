@@ -9,8 +9,15 @@ use Auth;
 
 class BarangController extends Controller
 {
+    public function Auth(){
+        if (Auth::user() == '') {
+            return view('auth.login');
+            exit();
+        }
+    }
     public function index()
     {
+        Auth();
         if (Auth::user() == '') {
             return view('auth.login');
             exit();
@@ -51,15 +58,18 @@ class BarangController extends Controller
             return view('auth.login');
             exit();
         }
+        $data = $request->validate([
+            'kode' => 'required',
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'id_kategori' => 'required',
         $barang = [
             'kode' => $request->kode,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'id_kategori' => $request->id_kategori,
         ];
-
         DB::table('barang')->insert($barang);
-
         return redirect()->route('barang.index')->with('success', 'Post updated successfully');
     }
 

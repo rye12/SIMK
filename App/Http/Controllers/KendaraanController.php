@@ -48,7 +48,6 @@ class KendaraanController extends Controller
             'tanggal_plat' => 'required',
             'no_mesin' => 'required',
             'warna' => 'required',
-
         ]);
         $kendaraan = [
             'nama' => $request->nama,
