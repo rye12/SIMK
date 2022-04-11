@@ -45,7 +45,6 @@ class GudangController extends Controller
             exit();
         }
         $barang = $request->barang;
-
         if (!empty($barang)) {
             $count = DB::table('transaksi_barang_masuk')->where('tanggal',date('Y-m-d'))->count();
             $kode = "BM".date('Ymd').($count+1);
@@ -54,10 +53,6 @@ class GudangController extends Controller
         }else{
             return back();
         }
-
-
-
-
         for ($i=0; $i < count($barang); $i++) { 
             DB::table('transaksi_barang_masuk_detail')->insert(['id_barang'=>$barang[$i],'jumlah'=>$request->jumlah[$i],'id_transaksi'=>$val->id]);
         }
@@ -85,7 +80,6 @@ class GudangController extends Controller
             exit();
         }
         $barang = $request->barang;
-
         if (!empty($barang)) {
             $count = DB::table('transaksi_barang_keluar')->where('tanggal',date('Y-m-d'))->count();
             $kode = "BM".date('Ymd').($count+1);
@@ -94,17 +88,9 @@ class GudangController extends Controller
         }else{
             return back();
         }
-
-
-
-
         for ($i=0; $i < count($barang); $i++) { 
             DB::table('transaksi_barang_keluar_detail')->insert(['id_barang'=>$barang[$i],'jumlah'=>$request->jumlah[$i],'id_transaksi'=>$val->id]);
         }
         return back();
     }
-
-
-
-
 }
